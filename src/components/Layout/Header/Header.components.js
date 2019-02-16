@@ -1,0 +1,47 @@
+import styled from "styled-components";
+
+export const Container = styled.header`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  border-bottom: 1px solid #4d4d4f;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+export const Link = styled.a`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  cursor: pointer;
+  text-decoration: none;
+`;
+
+export const Logo = styled.img.attrs({
+  src: `${process.env.PUBLIC_URL}/images/logo.png`,
+  alt: "Application Logo"
+})``;
+
+export const Title = styled.h1`
+  margin-left: 10px;
+  color: ${({ theme }) => theme.header.titleColor};
+  transition: color 200ms ease-out;
+`;
+
+export const DateTimeBox = styled.div`
+  display: flex;
+  flex: 3;
+  justify-content: center;
+  padding: 15px;
+  font-size: 1.4em;
+  transition: color 200ms ease-out;
+`;
+
+export const Date = styled.span``;
+export const Time = styled.span``;
+export const Space = styled.span``;
