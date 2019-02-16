@@ -1,4 +1,6 @@
-<h2 align="center">A simple way to view weather forecast.</h3>
+<h3>AccuWeather Client - a simple way to view weather forecast.</h3>
+
+![App screenshots](https://github.com/sergsavoniuk/accuweather-client/blob/master/app-screenshots.jpg)
 
 <hr />
 
