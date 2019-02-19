@@ -11,11 +11,11 @@ const circleBounceDelay = keyframes`
   }
 `;
 
-export const Box = styled.div`
+export const Wrapper = styled.div`
   position: relative;
   width: ${({ size }) => (size ? `${size}px` : "60px")};
   height: ${({ size }) => (size ? `${size}px` : "60px")};
-  margin: ${({ margin }) => margin || "100px auto"};
+  margin: ${({ alignment }) => alignment || "100px auto"};
 
   div:nth-child(2) {
     transform: rotate(30deg);

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Box = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
@@ -11,7 +11,7 @@ export const Box = styled.div`
   }
 `;
 
-export const AppErrorImage = styled.img.attrs({
+export const ErrorMessage = styled.img.attrs({
   src: `${process.env.PUBLIC_URL}/images/oops.png`,
   alt: "Something has gone wrong"
 })`

@@ -4,8 +4,8 @@ import SearchCity from "components/SearchCity";
 import WeatherForecast from "components/WeatherForecast";
 import ContentContext from "components/Contexts/ContentContext";
 import ContentErrorBoundary from "components/ErrorBoundaries";
+import { Wrapper } from "./Content.components";
 import LocalStorage from "utils/localStorage";
-import { Box } from "./Content.components";
 
 const Content = () => {
   const [cityId, setCityId] = useState(null);
@@ -20,10 +20,10 @@ const Content = () => {
   return (
     <ContentErrorBoundary>
       <ContentContext.Provider value={cityId}>
-        <Box>
-          {<SearchCity onSubmit={setCityId} />}
+        <Wrapper>
+          <SearchCity onSubmit={setCityId} />
           {cityId && <WeatherForecast city={LocalStorage.get("city")} />}
-        </Box>
+        </Wrapper>
       </ContentContext.Provider>
     </ContentErrorBoundary>
   );

@@ -30,7 +30,7 @@ export const CardContainer = styled.div`
   }
 `;
 
-export const Box = styled.div`
+export const Wrapper = styled.div`
   width: 100%;
   display: flex;
   margin: 0;

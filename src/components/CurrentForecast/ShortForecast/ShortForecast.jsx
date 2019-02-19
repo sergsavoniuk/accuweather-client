@@ -3,7 +3,7 @@ import LazyLoad from "react-lazyload";
 
 import { formatImageSource } from "utils";
 import {
-  Box,
+  Wrapper,
   Separator,
   Temperature,
   WeatherIcon
@@ -11,13 +11,13 @@ import {
 
 const ShortForecast = ({ icon, temperature }) => {
   return (
-    <Box>
+    <Wrapper>
       <LazyLoad height={45} once>
         <WeatherIcon src={formatImageSource(icon)} />
       </LazyLoad>
       <Separator />
       <Temperature>{temperature}&deg;</Temperature>
-    </Box>
+    </Wrapper>
   );
 };
 

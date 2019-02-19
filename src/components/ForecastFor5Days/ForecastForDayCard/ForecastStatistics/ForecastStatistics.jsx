@@ -3,8 +3,8 @@ import LazyLoad from "react-lazyload";
 
 import { formatImageSource } from "utils";
 import {
-  Box,
-  Title,
+  Wrapper,
+  TimeOfDay,
   WeatherIcon,
   Temperature,
   WeatherDescription,
@@ -15,8 +15,8 @@ const ForecastStatistics = ({
   forecast: { temperature, realFeelTemperature, description, icon },
   title
 }) => (
-  <Box>
-    <Title>{title.toUpperCase()}</Title>
+  <Wrapper>
+    <TimeOfDay>{title.toUpperCase()}</TimeOfDay>
     <LazyLoad height={45} once>
       <WeatherIcon src={formatImageSource(icon)} />
     </LazyLoad>
@@ -26,7 +26,7 @@ const ForecastStatistics = ({
       <span>RealFeel </span>
       <span>{realFeelTemperature}&deg;</span>
     </RealFeelTemperature>
-  </Box>
+  </Wrapper>
 );
 
 export default ForecastStatistics;

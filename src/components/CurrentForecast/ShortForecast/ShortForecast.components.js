@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Box = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex: 2;
   flex-direction: column;
@@ -24,7 +24,6 @@ export const Temperature = styled.span`
 export const Separator = styled.hr`
   display: block;
   width: 100%;
-
   height: 1px;
   margin: 20px 0;
   border: 0;

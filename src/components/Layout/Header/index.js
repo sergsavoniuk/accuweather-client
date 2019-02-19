@@ -1,1 +1,1 @@
-export { default, DateTime, AppLogo } from "./Header";
+export { default, Brand, DateTime } from "./Header";

@@ -1,62 +1,56 @@
 import React, { useContext } from "react";
 import LazyLoad from "react-lazyload";
 
-import { formatImageSource } from "utils";
-import useFetchForecast from "hooks/useFetchForecast";
-import { HOURLY_FORECAST_ENDPOINT } from "constants/endpoints";
-import { transformResponseData } from "./utils";
 import ContentContext from "components/Contexts/ContentContext";
 import Loader from "components/Loader";
-import { FILTERS } from "constants/filters";
-
+import useFetchForecast from "hooks/useFetchForecast";
+import { formatImageSource } from "utils";
+import { HOURLY_FORECAST_ENDPOINT } from "constants/endpoints";
+import { transformResponseData } from "./utils";
 import {
   Table,
-  TableHead,
-  TableRow,
-  TableData,
-  Box,
   WeatherDescription,
   Temperature,
   WeatherIcon,
-  InnerBox
+  Wrapper,
+  InnerWrapper
 } from "./HourlyForecast.components";
+import { FILTERS } from "constants/filters";
 
 export const TableHeader = () => (
   <thead>
     <tr>
-      <TableHead>Time</TableHead>
-      <TableHead>Temperature</TableHead>
-      <TableHead>Precipations</TableHead>
+      <th>Time</th>
+      <th>Temperature</th>
+      <th>Precipations</th>
     </tr>
   </thead>
 );
 
-export const TableBody = ({ data }) => {
-  return (
-    <tbody>
-      {(data || []).map(({ date, precipitationProbability, ...other }) => (
-        <TableRow key={date}>
-          <TableData>{date}</TableData>
-          <TableData>
-            <TemperatureCell {...other} />
-          </TableData>
-          <TableData>{precipitationProbability}%</TableData>
-        </TableRow>
-      ))}
-    </tbody>
-  );
-};
+export const TableBody = ({ data }) => (
+  <tbody>
+    {(data || []).map(({ date, precipitationProbability, ...other }) => (
+      <tr key={date}>
+        <td>{date}</td>
+        <td>
+          <TemperatureCell {...other} />
+        </td>
+        <td>{precipitationProbability}%</td>
+      </tr>
+    ))}
+  </tbody>
+);
 
 export const TemperatureCell = ({ icon, temperature, description }) => (
-  <Box>
-    <InnerBox>
+  <Wrapper>
+    <InnerWrapper>
       <LazyLoad height={45} once>
         <WeatherIcon src={formatImageSource(icon)} />
       </LazyLoad>
       <Temperature>{temperature}&deg;</Temperature>
-    </InnerBox>
+    </InnerWrapper>
     <WeatherDescription>{description}</WeatherDescription>
-  </Box>
+  </Wrapper>
 );
 
 const HourlyForecast = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import Switch from "react-switch";
 
-import { Box, UncheckedIcon, CheckedIcon } from "./ThemeChanger.components";
+import { Wrapper, UncheckedIcon, CheckedIcon } from "./ThemeChanger.components";
 import { LIGHT, DARK } from "constants/themes";
 
 const BLACK_COLOR = "#000";
@@ -12,7 +12,7 @@ const ThemeChanger = ({ defaultTheme, onChangeTheme }) => {
   };
 
   return (
-    <Box>
+    <Wrapper>
       <Switch
         checked={defaultTheme === DARK}
         onChange={handleChange}
@@ -21,7 +21,7 @@ const ThemeChanger = ({ defaultTheme, onChangeTheme }) => {
         uncheckedIcon={<UncheckedIcon />}
         checkedIcon={<CheckedIcon />}
       />
-    </Box>
+    </Wrapper>
   );
 };
 

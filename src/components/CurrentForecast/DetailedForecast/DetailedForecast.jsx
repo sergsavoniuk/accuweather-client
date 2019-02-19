@@ -1,6 +1,7 @@
 import React from "react";
+import "styled-components/macro";
 
-import { Box, Label, Value } from "./DetailedForecast.components";
+import { Wrapper, Param, Value } from "./DetailedForecast.components";
 
 const DetailedForecast = ({
   description,
@@ -9,26 +10,26 @@ const DetailedForecast = ({
   wind,
   visibility
 }) => (
-  <Box>
-    <Label margin="20px 0 30px 0">
+  <Wrapper>
+    <Param css="margin: 20px 0 30px 0;">
       <Value>{description}</Value>
-    </Label>
-    <Label>
+    </Param>
+    <Param>
       Real Feel: <Value>{realFeelTemperature}&deg;</Value>
-    </Label>
-    <Label>
+    </Param>
+    <Param>
       Humidity: <Value>{humidity}%</Value>
-    </Label>
-    <Label>
+    </Param>
+    <Param>
       Wind:{" "}
       <Value>
         {wind.direction} {wind.speed} km/h
       </Value>
-    </Label>
-    <Label>
+    </Param>
+    <Param>
       Visibility: <Value>{visibility} km</Value>
-    </Label>
-  </Box>
+    </Param>
+  </Wrapper>
 );
 
 export default DetailedForecast;

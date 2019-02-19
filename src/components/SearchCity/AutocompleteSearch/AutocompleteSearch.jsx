@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Loader from "components/Loader";
 import useAutocomplete from "hooks/useAutocomplete";
 import {
-  Box,
+  Wrapper,
   Input,
   DropdownList as List,
   DropdownListItem as ListItem
@@ -22,7 +22,7 @@ export const DropdownList = ({ items, loading, onSelect }) => {
       <List>
         {loading ? (
           <ListItem>
-            <Loader margin="0 auto" size={40} color="#848080" />
+            <Loader alignment="0 auto" size={40} color="#848080" />
           </ListItem>
         ) : (
           Object.keys(items).map(key => (
@@ -50,11 +50,11 @@ export default function AutocompleteSearch({ city: { value }, onChange }) {
   }
 
   return (
-    <Box>
+    <Wrapper>
       <Input value={value} onChange={handleChange} />
       {loading || Object.keys(data).length > 0 ? (
         <DropdownList items={data} loading={loading} onSelect={onChange} />
       ) : null}
-    </Box>
+    </Wrapper>
   );
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Box = styled.div`
+export const Wrapper = styled.div`
   position: absolute;
   top: 10px;
   right: 10px;

@@ -1,13 +1,13 @@
 import React from "react";
 
-import { Box, Child } from "./Loader.components";
+import { Wrapper, Child } from "./Loader.components";
 
-const Loader = ({ margin, size, color }) => (
-  <Box margin={margin} size={size}>
+const Loader = ({ alignment, size, color }) => (
+  <Wrapper alignment={alignment} size={size}>
     {Array.from({ length: 12 }, (_, index) => (
       <Child key={index} color={color} />
     ))}
-  </Box>
+  </Wrapper>
 );
 
 export default Loader;

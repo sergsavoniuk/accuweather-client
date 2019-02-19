@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Box, AppErrorImage } from "./ContentErrorBoundary.components";
+import { Wrapper, ErrorMessage } from "./ContentErrorBoundary.components";
 
 export default class ContentErrorBoundary extends Component {
   state = {
@@ -14,11 +14,12 @@ export default class ContentErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <Box>
-          <AppErrorImage />
-        </Box>
+        <Wrapper>
+          <ErrorMessage />
+        </Wrapper>
       );
     }
+
     return this.props.children;
   }
 }

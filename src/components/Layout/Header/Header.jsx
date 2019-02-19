@@ -3,14 +3,11 @@ import { format } from "date-fns";
 
 import useInterval from "hooks/useInterval";
 import {
-  Container,
-  Link,
-  Logo,
-  Title,
-  DateTimeBox,
-  Date as FormattedDate,
-  Time as FormattedTime,
-  Space
+  Header as StyledHeader,
+  Brand as StyledBrand,
+  BrandLogo,
+  BrandName,
+  Wrapper
 } from "./Header.components";
 
 const DATE_FORMAT = "DD MMMM";
@@ -24,26 +21,26 @@ export const DateTime = () => {
   }, 1000 * (60 - date.getSeconds()));
 
   return (
-    <DateTimeBox>
-      <FormattedDate>{format(date, DATE_FORMAT)}</FormattedDate>
-      <Space>{",  "}</Space>
-      <FormattedTime>{format(date, TIME_FORMAT)}</FormattedTime>
-    </DateTimeBox>
+    <Wrapper>
+      <span>{format(date, DATE_FORMAT)}</span>
+      <span>{",  "}</span>
+      <span>{format(date, TIME_FORMAT)}</span>
+    </Wrapper>
   );
 };
 
-export const AppLogo = () => (
-  <Link href="#">
-    <Logo />
-    <Title>AccuWeather Client</Title>
-  </Link>
+export const Brand = () => (
+  <StyledBrand as="a" href="#">
+    <BrandLogo />
+    <BrandName>AccuWeather Client</BrandName>
+  </StyledBrand>
 );
 
 const Header = () => (
-  <Container>
-    <AppLogo />
+  <StyledHeader>
+    <Brand />
     <DateTime />
-  </Container>
+  </StyledHeader>
 );
 
 export default Header;

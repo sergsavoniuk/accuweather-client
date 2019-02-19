@@ -2,7 +2,7 @@ import React, { useState, useEffect, lazy } from "react";
 
 import ForecastFilters from "./ForecastFilters";
 import Loader from "components/Loader";
-import { Title } from "./WeatherForecast.components";
+import { Heading } from "./WeatherForecast.components";
 import { FILTERS } from "constants/filters";
 import { lazyWithPrefetch } from "./utils";
 
@@ -30,7 +30,7 @@ const WeatherForecast = ({ city }) => {
 
   return (
     <>
-      <Title>Weather forecast for {city}</Title>
+      <Heading>Weather forecast for {city}</Heading>
       <ForecastFilters activeFilter={filter} onFilterChange={setFilter} />
       <React.Suspense fallback={<Loader />}>
         <Page />

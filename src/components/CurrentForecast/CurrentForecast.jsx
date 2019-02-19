@@ -4,7 +4,7 @@ import ContentContext from "components/Contexts/ContentContext";
 import DetailedForecast from "./DetailedForecast";
 import ShortForecast from "./ShortForecast";
 import Loader from "components/Loader";
-import { Box } from "./CurrentForecast.components";
+import { Wrapper } from "./CurrentForecast.components";
 import useFetchForecast from "hooks/useFetchForecast";
 import { CURRENT_FORECAST_ENDPOINT } from "constants/endpoints";
 import { transformResponseData } from "./utils";
@@ -13,7 +13,7 @@ import { FILTERS } from "constants/filters";
 const CurrentForecast = () => {
   const cityId = useContext(ContentContext);
 
-  const { data = {}, loading, error } = useFetchForecast({
+  const { data, loading, error } = useFetchForecast({
     url: CURRENT_FORECAST_ENDPOINT,
     options: {
       cityId,
@@ -42,7 +42,7 @@ const CurrentForecast = () => {
 
   return (
     Object.keys(data || {}).length > 0 && (
-      <Box>
+      <Wrapper>
         <ShortForecast icon={icon} temperature={temperature} />
         <DetailedForecast
           description={description}
@@ -51,7 +51,7 @@ const CurrentForecast = () => {
           wind={wind}
           visibility={visibility}
         />
-      </Box>
+      </Wrapper>
     )
   );
 };

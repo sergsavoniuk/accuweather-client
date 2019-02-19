@@ -1,7 +1,7 @@
 import React from "react";
 
 import {
-  Box,
+  Wrapper,
   FilterButton as StyledFilterButton
 } from "./ForecastFilters.components";
 import { FILTERS } from "constants/filters";
@@ -22,29 +22,17 @@ export const FilterButton = ({
 );
 
 const ForecastFilters = ({ activeFilter, onFilterChange }) => (
-  <Box>
-    <FilterButton
-      activeFilter={activeFilter}
-      name={FILTERS.Current}
-      onFilterChange={onFilterChange}
-    >
-      Current
-    </FilterButton>
-    <FilterButton
-      activeFilter={activeFilter}
-      name={FILTERS.Hourly}
-      onFilterChange={onFilterChange}
-    >
-      Hourly
-    </FilterButton>
-    <FilterButton
-      activeFilter={activeFilter}
-      name={FILTERS.For5Days}
-      onFilterChange={onFilterChange}
-    >
-      For 5 Days
-    </FilterButton>
-  </Box>
+  <Wrapper>
+    {Object.keys(FILTERS).map(key => (
+      <FilterButton
+        activeFilter={activeFilter}
+        name={FILTERS[key]}
+        onFilterChange={onFilterChange}
+      >
+        {key}
+      </FilterButton>
+    ))}
+  </Wrapper>
 );
 
 export default ForecastFilters;

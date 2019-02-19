@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import Loader from "components/Loader";
 import ForecastForDayCard from "./ForecastForDayCard";
-import { Box } from "./ForecastFor5Days.components";
+import { Wrapper } from "./ForecastFor5Days.components";
 import ContentContext from "components/Contexts/ContentContext";
 import useFetchForecast from "hooks/useFetchForecast";
 import { transformResponseData } from "./utils";
@@ -30,11 +30,11 @@ const ForecastFor5Days = () => {
   }
 
   return (
-    <Box>
+    <Wrapper>
       {(data || []).map(forecast => (
         <ForecastForDayCard key={forecast.date} forecast={forecast} />
       ))}
-    </Box>
+    </Wrapper>
   );
 };
 
