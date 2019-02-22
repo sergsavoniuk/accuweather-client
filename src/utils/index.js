@@ -3,8 +3,8 @@ import { format } from "date-fns";
 const ACCUWEATHER_FILES_URL =
   "https://developer.accuweather.com/sites/default/files/";
 
-export function getFormattedDate(datetime, tokens) {
-  return format(new Date(datetime), tokens).split(",");
+export function getFormattedDate(datetime, tokens, locale) {
+  return format(new Date(datetime), tokens, { locale }).split(",");
 }
 
 export function formatImageSource(icon) {

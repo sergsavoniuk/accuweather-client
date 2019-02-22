@@ -1,0 +1,20 @@
+{
+  "FilterButton.Current.label": "Current",
+  "FilterButton.Hourly.label": "Hourly",
+  "FilterButton.For5Days.label": "For5Days",
+  "SearchInput.placeholder": "Enter city",
+  "SearchButton.label": "Search",
+  "WeatherForecast.heading": "Weather forecast for",
+  "DetailedForecast.param.realFeel": "Real Feel",
+  "DetailedForecast.param.humidity": "Humidity",
+  "DetailedForecast.param.wind": "Wind",
+  "DetailedForecast.param.wind.unit": "km/h",
+  "DetailedForecast.param.visibility": "Visibility",
+  "DetailedForecast.param.visibility.unit": "km",
+  "ForecastForDay.Statistics.dayOfTime.day": "Day",
+  "ForecastForDay.Statistics.dayOfTime.night": "Night",
+  "ForecastForDay.Statistics.realFeel": "Real Feel",
+  "HourlyForecast.column.time": "Time",
+  "HourlyForecast.column.temperature": "Temperature",
+  "HourlyForecast.column.precipation": "Precipation"
+}

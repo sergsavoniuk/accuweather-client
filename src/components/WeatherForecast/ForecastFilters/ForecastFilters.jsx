@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   Wrapper,
@@ -11,15 +12,18 @@ export const FilterButton = ({
   name,
   children,
   onFilterChange
-}) => (
-  <StyledFilterButton
-    active={activeFilter === name}
-    name={name}
-    onClick={event => onFilterChange(event.target.name)}
-  >
-    {children}
-  </StyledFilterButton>
-);
+}) => {
+  const [t] = useTranslation();
+  return (
+    <StyledFilterButton
+      active={activeFilter === name}
+      name={name}
+      onClick={event => onFilterChange(event.target.name)}
+    >
+      {t(`FilterButton.${children}.label`)}
+    </StyledFilterButton>
+  );
+};
 
 const ForecastFilters = ({ activeFilter, onFilterChange }) => (
   <Wrapper>

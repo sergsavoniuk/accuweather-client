@@ -7,8 +7,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Input = styled.input.attrs({
-  type: "text",
-  placeholder: "Enter city"
+  type: "text"
 })`
   width: 100%;
   padding: 7px 10px 7px 10px;

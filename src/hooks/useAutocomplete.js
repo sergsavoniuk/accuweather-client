@@ -5,6 +5,7 @@ import {
   transformResponseData,
   formatUrl
 } from "components/SearchCity/AutocompleteSearch/utils";
+import LocalStorage from "utils/localStorage";
 
 const initialState = {
   data: {},
@@ -32,9 +33,15 @@ export default function useAutocomplete(onChange) {
       try {
         setState({ loading: true });
 
-        const data = await axios(formatUrl(userInput.current), {
-          cancelToken: cancelTokenSource.current.token
-        });
+        const data = await axios(
+          formatUrl({
+            query: userInput.current,
+            language: LocalStorage.get("language")
+          }),
+          {
+            cancelToken: cancelTokenSource.current.token
+          }
+        );
 
         setState({
           data: transformResponseData(data),

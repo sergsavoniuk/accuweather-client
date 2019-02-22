@@ -1,4 +1,5 @@
 import React, { useState, useEffect, lazy } from "react";
+import { useTranslation } from "react-i18next";
 
 import ForecastFilters from "./ForecastFilters";
 import Loader from "components/Loader";
@@ -19,6 +20,7 @@ const PAGES = {
 };
 
 const WeatherForecast = ({ city }) => {
+  const [t] = useTranslation();
   const [filter, setFilter] = useState(FILTERS.Current);
 
   useEffect(() => {
@@ -30,7 +32,9 @@ const WeatherForecast = ({ city }) => {
 
   return (
     <>
-      <Heading>Weather forecast for {city}</Heading>
+      <Heading>
+        {t("WeatherForecast.heading")} {city}
+      </Heading>
       <ForecastFilters activeFilter={filter} onFilterChange={setFilter} />
       <React.Suspense fallback={<Loader />}>
         <Page />

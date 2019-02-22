@@ -70,17 +70,20 @@ export default function useFetchForecast({ url, options, cb }) {
 
       isMounted.current = false;
     };
-  }, [options.cityId]);
+  }, [options.cityId, options.language]);
 
   return state;
 }
 
-function formatUrl(url, { cityId, details = true, metric = true }) {
-  return `${url}/${cityId}?${setQuery(details, metric)}`;
+function formatUrl(
+  url,
+  { cityId, language = "en", details = true, metric = true }
+) {
+  return `${url}/${cityId}?${setQuery(language, details, metric)}`;
 }
 
-function setQuery(details, metric) {
+function setQuery(language, details, metric) {
   return `apikey=${
     process.env.REACT_APP_ACCUWEATHER_KEY
-  }&details=${details}&metric=${metric}`;
+  }&language=${language}&details=${details}&metric=${metric}`;
 }

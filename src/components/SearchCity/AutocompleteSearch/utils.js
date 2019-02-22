@@ -9,7 +9,7 @@ export const transformResponseData = data =>
     return target;
   }, {});
 
-export const formatUrl = query =>
+export const formatUrl = ({ query, language }) =>
   `${CITIES_AUTOCOMPLETE_ENDPOINT}?apikey=${
     process.env.REACT_APP_ACCUWEATHER_KEY
-  }&q=${query}`;
+  }&q=${query}&language=${language}`;

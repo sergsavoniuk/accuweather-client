@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 
 import Layout from "components/Layout";
@@ -6,6 +6,9 @@ import Header from "components/Layout/Header";
 import Content from "components/Layout/Content";
 import ThemeChanger from "./ThemeChanger";
 import Themes, { DARK } from "constants/themes";
+import LanguageChanger from "./LanguageChanger/LanguageChanger";
+import { useTranslation } from "react-i18next";
+import LocalStorage from "utils/localStorage";
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -25,12 +28,24 @@ const GlobalStyles = createGlobalStyle`
 
 const WeatherApp = () => {
   const [theme, setTheme] = useState(DARK);
+  // eslint-disable-next-line no-unused-vars
+  const [t, i18n] = useTranslation();
+
+  useEffect(() => {
+    let currentLanguage = LocalStorage.get("language");
+    if (!currentLanguage) {
+      LocalStorage.set("language", i18n.language);
+      currentLanguage = i18n.language;
+    }
+    i18n.changeLanguage(currentLanguage);
+  }, [i18n.language]);
 
   return (
     <>
       <GlobalStyles />
       <ThemeProvider theme={Themes[theme]}>
         <Layout>
+          <LanguageChanger currentLanguage={i18n.language} />
           <ThemeChanger defaultTheme={theme} onChangeTheme={setTheme} />
           <Header />
           <Content />

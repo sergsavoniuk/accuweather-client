@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import SearchCityAutocomplete from "./AutocompleteSearch";
 import { Form, Button } from "./SearchCity.components";
@@ -11,6 +12,7 @@ const initialState = {
 
 const SearchCityForm = ({ onSubmit }) => {
   const [city, setCity] = useState(initialState);
+  const [t] = useTranslation();
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -26,7 +28,7 @@ const SearchCityForm = ({ onSubmit }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <SearchCityAutocomplete city={city} onChange={handleInputChange} />
-      <Button>Search</Button>
+      <Button>{t("SearchButton.label")}</Button>
     </Form>
   );
 };

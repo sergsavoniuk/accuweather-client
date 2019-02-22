@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import Loader from "components/Loader";
 import useAutocomplete from "hooks/useAutocomplete";
@@ -43,6 +44,7 @@ export const DropdownList = ({ items, loading, onSelect }) => {
 };
 
 export default function AutocompleteSearch({ city: { value }, onChange }) {
+  const [t] = useTranslation();
   const { data, loading, error, handleChange } = useAutocomplete(onChange);
 
   if (error) {
@@ -51,7 +53,11 @@ export default function AutocompleteSearch({ city: { value }, onChange }) {
 
   return (
     <Wrapper>
-      <Input value={value} onChange={handleChange} />
+      <Input
+        value={value}
+        placeholder={t("SearchInput.placeholder")}
+        onChange={handleChange}
+      />
       {loading || Object.keys(data).length > 0 ? (
         <DropdownList items={data} loading={loading} onSelect={onChange} />
       ) : null}

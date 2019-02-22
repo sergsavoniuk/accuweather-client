@@ -20,7 +20,14 @@ const LocalStorage = () => {
       return deserialize(localStorage.getItem(prefix) || undefined)[key];
     },
 
-    remove(key) {},
+    remove(key) {
+      const data = deserialize(localStorage.getItem(prefix));
+      const { current, hourly, for5Days, ...rest } = data;
+      this.clear();
+      Object.keys(rest).forEach(key => {
+        this.set(key, rest[key]);
+      });
+    },
 
     clear() {
       localStorage.clear();

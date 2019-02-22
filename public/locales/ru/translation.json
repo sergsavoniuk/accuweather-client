@@ -1,0 +1,20 @@
+{
+  "FilterButton.Current.label": "Текущий",
+  "FilterButton.Hourly.label": "Почасовой",
+  "FilterButton.For5Days.label": "5 дней",
+  "SearchInput.placeholder": "Введите город",
+  "SearchButton.label": "Искать",
+  "WeatherForecast.heading": "Прогноз погоды для",
+  "DetailedForecast.param.realFeel": "Ощущается",
+  "DetailedForecast.param.humidity": "Влажность",
+  "DetailedForecast.param.wind": "Ветер",
+  "DetailedForecast.param.wind.unit": "км/ч",
+  "DetailedForecast.param.visibility": "Видимость",
+  "DetailedForecast.param.visibility.unit": "км",
+  "ForecastForDay.Statistics.dayOfTime.day": "День",
+  "ForecastForDay.Statistics.dayOfTime.night": "Ночь",
+  "ForecastForDay.Statistics.realFeel": "Ощущается",
+  "HourlyForecast.column.time": "Время",
+  "HourlyForecast.column.temperature": "Температура",
+  "HourlyForecast.column.precipation": "Осадки"
+}

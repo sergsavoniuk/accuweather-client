@@ -8,6 +8,7 @@ import useFetchForecast from "hooks/useFetchForecast";
 import { transformResponseData } from "./utils";
 import { FILTERS } from "constants/filters";
 import { FOR5DAYS_FORECAST_ENDPOINT } from "constants/endpoints";
+import LocalStorage from "utils/localStorage";
 
 const ForecastFor5Days = () => {
   const cityId = useContext(ContentContext);
@@ -16,6 +17,7 @@ const ForecastFor5Days = () => {
     url: FOR5DAYS_FORECAST_ENDPOINT,
     options: {
       cityId,
+      language: LocalStorage.get("language"),
       filter: FILTERS.For5Days
     },
     cb: transformResponseData

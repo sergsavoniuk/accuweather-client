@@ -9,6 +9,7 @@ import useFetchForecast from "hooks/useFetchForecast";
 import { CURRENT_FORECAST_ENDPOINT } from "constants/endpoints";
 import { transformResponseData } from "./utils";
 import { FILTERS } from "constants/filters";
+import LocalStorage from "utils/localStorage";
 
 const CurrentForecast = () => {
   const cityId = useContext(ContentContext);
@@ -17,6 +18,7 @@ const CurrentForecast = () => {
     url: CURRENT_FORECAST_ENDPOINT,
     options: {
       cityId,
+      language: LocalStorage.get("language"),
       filter: FILTERS.Current
     },
     cb: transformResponseData
