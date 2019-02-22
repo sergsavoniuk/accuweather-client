@@ -25,6 +25,7 @@ const ForecastFilters = ({ activeFilter, onFilterChange }) => (
   <Wrapper>
     {Object.keys(FILTERS).map(key => (
       <FilterButton
+        key={key}
         activeFilter={activeFilter}
         name={FILTERS[key]}
         onFilterChange={onFilterChange}
