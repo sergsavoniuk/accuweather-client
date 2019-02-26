@@ -7,19 +7,21 @@ import {
   RussianFlagIcon,
   BritainFlagIcon
 } from "./LanguageChanger.components";
+import { EN, RU } from "constants/languages";
+import { FILTERS } from "constants/filters";
 
 const LanguageChanger = () => {
   const handleLanguageChange = event => {
     const language = event.target.name;
     LocalStorage.set("language", language);
-    LocalStorage.remove("current");
+    LocalStorage.remove(Object.values(FILTERS));
     i18n.changeLanguage(language);
   };
 
   return (
     <Wrapper>
-      <RussianFlagIcon name="ru" onClick={handleLanguageChange} />
-      <BritainFlagIcon name="en" onClick={handleLanguageChange} />
+      <RussianFlagIcon name={RU} onClick={handleLanguageChange} />
+      <BritainFlagIcon name={EN} onClick={handleLanguageChange} />
     </Wrapper>
   );
 };

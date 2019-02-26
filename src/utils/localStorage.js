@@ -1,5 +1,5 @@
 const LocalStorage = () => {
-  const prefix = "accuweather_data";
+  const PREFIX = "accuweather_data";
 
   const serialize = (data = {}) => JSON.stringify(data);
 
@@ -8,25 +8,30 @@ const LocalStorage = () => {
   return {
     set(key, value) {
       localStorage.setItem(
-        prefix,
+        PREFIX,
         serialize({
-          ...deserialize(localStorage.getItem(prefix) || undefined),
+          ...deserialize(localStorage.getItem(PREFIX) || undefined),
           [key]: value
         })
       );
     },
 
     get(key) {
-      return deserialize(localStorage.getItem(prefix) || undefined)[key];
+      return deserialize(localStorage.getItem(PREFIX) || undefined)[key];
     },
 
     remove(key) {
-      const data = deserialize(localStorage.getItem(prefix));
-      const { current, hourly, for5Days, ...rest } = data;
-      this.clear();
-      Object.keys(rest).forEach(key => {
-        this.set(key, rest[key]);
-      });
+      const data = deserialize(localStorage.getItem(PREFIX));
+      const keys = [...key];
+
+      const newData = Object.keys(data).reduce((filteredData, currentKey) => {
+        if (!keys.includes(currentKey)) {
+          filteredData[currentKey] = data[currentKey];
+        }
+        return filteredData;
+      }, {});
+
+      localStorage.setItem(PREFIX, serialize(newData));
     },
 
     clear() {

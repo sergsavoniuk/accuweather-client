@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
-  flex: 2;
   flex-direction: column;
+  flex: 2;
   align-items: center;
   margin-right: 20px;
 `;
@@ -13,6 +13,7 @@ export const WeatherIcon = styled.img.attrs({
 })`
   width: 75px;
   height: 45px;
+  margin-top: 20px;
 `;
 
 export const Temperature = styled.span`
@@ -25,7 +26,7 @@ export const Separator = styled.hr`
   display: block;
   width: 100%;
   height: 1px;
-  margin: 20px 0;
+  margin: 10px 0 15px 0;
   border: 0;
   border-top: 1px solid ${({ theme }) => theme.secondaryColor};
 `;

@@ -4,8 +4,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 3;
-  align-items: flex-start;
-  margin: 0;
 
   & > span:not(:first-child) {
     font-size: 0.9em;

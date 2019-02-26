@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import SearchCityAutocomplete from "./AutocompleteSearch";
 import { Form, Button } from "./SearchCity.components";
 import LocalStorage from "utils/localStorage";
+import { FILTERS } from "constants/filters";
 
 const initialState = {
   key: null,
@@ -17,9 +18,14 @@ const SearchCityForm = ({ onSubmit }) => {
   const handleSubmit = event => {
     event.preventDefault();
     setCity(initialState);
-    LocalStorage.clear();
+
+    // Remove weather forecast for previous city
+    LocalStorage.remove(Object.values(FILTERS));
+
+    // Update local storage, set new city
     LocalStorage.set("cityId", city.key);
     LocalStorage.set("city", city.value);
+
     onSubmit(city.key);
   };
 
