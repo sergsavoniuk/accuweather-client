@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Table = styled.table`
   border: 1px solid ${({ theme }) => theme.table.borderColor};
   border-collapse: collapse;
-  word-break: break-all;
 
   th,
   td {
@@ -51,20 +50,21 @@ export const Table = styled.table`
     color: ${({ theme }) => theme.secondaryColor};
   }
 
-  @media (min-width: 1023px) {
+  @media (min-width: 1024px) {
     width: 70%;
   }
 
-  @media (max-width: 769px) {
+  @media (max-width: 1023px) {
     width: 80%;
   }
 
-  @media (max-width: 426px) {
+  @media (max-width: 425px) {
     width: 90%;
   }
 
-  @media (max-width: 376px) {
+  @media (max-width: 375px) {
     width: 95%;
+    word-break: break-word;
   }
 `;
 

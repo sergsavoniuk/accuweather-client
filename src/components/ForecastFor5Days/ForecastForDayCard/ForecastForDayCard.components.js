@@ -34,7 +34,7 @@ export const Wrapper = styled.div`
   width: 100%;
   display: flex;
   margin: 0;
-  padding: 10px 7px;
+  padding: 10px 0;
 `;
 
 export const Separator = styled.hr`
