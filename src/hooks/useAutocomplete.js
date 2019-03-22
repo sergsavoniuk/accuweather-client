@@ -10,32 +10,45 @@ import LocalStorage from "utils/localStorage";
 const initialState = {
   data: {},
   loading: false,
-  error: null
+  error: null,
+  isOpen: true
 };
 
-const reducer = (state, newState) => {
+function reducer(state, newState) {
   return { ...state, ...newState };
-};
+}
 
-export default function useAutocomplete(onChange) {
+export default function useAutocomplete(value, onChange) {
   const [state, setState] = useReducer(reducer, initialState);
   const cancelTokenSource = useRef(null);
-  const userInput = useRef("");
 
-  const handleChange = event => {
-    const value = event.target.value;
-    userInput.current = value;
+  function handleChange(event) {
+    const { value } = event.target;
     onChange({ key: null, value });
-  };
+  }
 
-  const fetchData = async () => {
-    if (userInput.current !== "") {
+  function handleFocus() {
+    if (value.length > 0) {
+      setState({ isOpen: true });
+    }
+  }
+
+  function handleBlur() {
+    if (state.isOpen) {
+      setTimeout(() => {
+        setState({ isOpen: false });
+      }, 200);
+    }
+  }
+
+  async function fetchData() {
+    if (value !== "") {
       try {
         setState({ loading: true });
 
         const data = await axios(
           formatUrl({
-            query: userInput.current,
+            query: value,
             language: LocalStorage.get("language")
           }),
           {
@@ -52,8 +65,10 @@ export default function useAutocomplete(onChange) {
           setState({ error });
         }
       }
+    } else {
+      setState({ data: {} });
     }
-  };
+  }
 
   useEffect(() => {
     cancelTokenSource.current = axios.CancelToken.source();
@@ -64,10 +79,12 @@ export default function useAutocomplete(onChange) {
       setState({ loading: false });
       cancelTokenSource.current.cancel();
     };
-  }, [userInput.current]);
+  }, [value]);
 
   return {
     ...state,
-    handleChange
+    handleChange,
+    handleBlur,
+    handleFocus
   };
 }
