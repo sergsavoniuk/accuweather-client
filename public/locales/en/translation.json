@@ -1,7 +1,7 @@
 {
-  "FilterButton.Current.label": "Current",
-  "FilterButton.Hourly.label": "Hourly",
-  "FilterButton.For5Days.label": "For5Days",
+  "ForecastTab.Current.label": "Current",
+  "ForecastTab.Hourly.label": "Hourly",
+  "ForecastTab.For5Days.label": "For5Days",
   "SearchInput.placeholder": "Enter city",
   "SearchButton.label": "Search",
   "WeatherForecast.heading": "Weather forecast for",

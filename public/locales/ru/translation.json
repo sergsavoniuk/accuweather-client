@@ -1,7 +1,7 @@
 {
-  "FilterButton.Current.label": "Текущий",
-  "FilterButton.Hourly.label": "Почасовой",
-  "FilterButton.For5Days.label": "5 дней",
+  "ForecastTab.Current.label": "Текущий",
+  "ForecastTab.Hourly.label": "Почасовой",
+  "ForecastTab.For5Days.label": "5 дней",
   "SearchInput.placeholder": "Введите город",
   "SearchButton.label": "Искать",
   "WeatherForecast.heading": "Прогноз погоды для",

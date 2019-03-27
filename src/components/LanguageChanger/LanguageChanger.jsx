@@ -8,7 +8,7 @@ import {
   BritainFlagIcon
 } from "./LanguageChanger.components";
 import { EN, RU } from "constants/languages";
-import { FILTERS } from "constants/filters";
+import { FORECAST_TABS as FILTERS } from "constants/forecastTabs";
 
 const LanguageChanger = () => {
   const handleLanguageChange = event => {

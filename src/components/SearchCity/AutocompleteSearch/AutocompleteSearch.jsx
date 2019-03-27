@@ -33,7 +33,7 @@ export const DropdownList = ({ items, loading, onSelect }) => (
 
 export default function AutocompleteSearch({ city: { value }, onChange }) {
   const [t] = useTranslation();
-  console.log(value);
+
   const {
     data,
     loading,

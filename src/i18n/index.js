@@ -13,7 +13,7 @@ i18n
     lng: EN,
     load: "languageOnly",
     keySeparator: false,
-    debug: true,
+    // debug: true,
 
     interpolation: {
       escapeValue: false

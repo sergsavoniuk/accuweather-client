@@ -7,7 +7,7 @@ import useFetchForecast from "hooks/useFetchForecast";
 import { Table, TableHeader, TableBody } from "./HourlyForecastTable";
 import { HOURLY_FORECAST_ENDPOINT } from "constants/endpoints";
 import { transformResponseData } from "./utils";
-import { FILTERS } from "constants/filters";
+import { FORECAST_TABS as FILTERS } from "constants/forecastTabs";
 
 const HourlyForecast = () => {
   const cityId = useContext(ContentContext);

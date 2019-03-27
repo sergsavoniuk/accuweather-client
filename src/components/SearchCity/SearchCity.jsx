@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import SearchCityAutocomplete from "./AutocompleteSearch";
 import { Form, Button } from "./SearchCity.components";
 import LocalStorage from "utils/localStorage";
-import { FILTERS } from "constants/filters";
+import { FORECAST_TABS as FILTERS } from "constants/forecastTabs";
 
 const initialState = {
   key: null,

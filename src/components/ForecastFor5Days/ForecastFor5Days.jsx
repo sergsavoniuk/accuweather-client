@@ -6,7 +6,7 @@ import { Wrapper } from "./ForecastFor5Days.components";
 import ContentContext from "components/Contexts/ContentContext";
 import useFetchForecast from "hooks/useFetchForecast";
 import { transformResponseData } from "./utils";
-import { FILTERS } from "constants/filters";
+import { FORECAST_TABS as FILTERS } from "constants/forecastTabs";
 import { FOR5DAYS_FORECAST_ENDPOINT } from "constants/endpoints";
 import LocalStorage from "utils/localStorage";
 
