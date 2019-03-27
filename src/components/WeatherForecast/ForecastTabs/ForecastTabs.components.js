@@ -29,3 +29,11 @@ export const ForecastTabListItem = styled.button`
     font-size: 1.3em;
   }
 `;
+
+export const RefreshButton = styled.button`
+  background: transparent;
+  border: none;
+  margin-bottom: 10px;
+  outline: none;
+  cursor: pointer;
+`;

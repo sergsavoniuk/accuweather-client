@@ -29,7 +29,8 @@ const Themes = {
       hoverColor: "#bbffff",
       borderColor: "#9b9b9b"
     },
-    dropdown
+    dropdown,
+    themeName: "light"
   },
   dark: {
     backgroundColor: "#282c35",
@@ -51,7 +52,8 @@ const Themes = {
       hoverColor: "#3b444b",
       borderColor: "#9b9b9b"
     },
-    dropdown
+    dropdown,
+    themeName: "dark"
   }
 };
 

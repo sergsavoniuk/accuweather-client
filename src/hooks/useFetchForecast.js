@@ -55,7 +55,7 @@ export default function useFetchForecast({ url, options, cb }) {
 
     // check if data exists in local storage and use them
     const dataFromLocalStorage = LocalStorage.get(options.filter);
-    if (dataFromLocalStorage) {
+    if (dataFromLocalStorage && !options.isFreshDataRequested) {
       setState({ data: dataFromLocalStorage });
     } else {
       cancelTokenSource.current = axios.CancelToken.source();
@@ -70,7 +70,12 @@ export default function useFetchForecast({ url, options, cb }) {
 
       isMounted.current = false;
     };
-  }, [options.cityId, options.language]);
+  }, [
+    options.cityId,
+    options.language,
+    options.filter,
+    options.isFreshDataRequested
+  ]);
 
   return state;
 }

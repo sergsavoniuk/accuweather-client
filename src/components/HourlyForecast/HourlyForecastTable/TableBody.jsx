@@ -12,7 +12,7 @@ const TableBody = ({ data }) => {
 
   return (
     <tbody>
-      {(data || []).map(({ date, precipitationProbability, ...other }) => (
+      {data.map(({ date, precipitationProbability, ...other }) => (
         <tr key={date}>
           <td>{format(date, pattern, { locale })}</td>
           <td>
