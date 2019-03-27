@@ -1,15 +1,16 @@
-import React from "react";
-import Switch from "react-switch";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Switch from 'react-switch';
 
-import { Wrapper, UncheckedIcon, CheckedIcon } from "./ThemeChanger.components";
-import { LIGHT, DARK } from "constants/themes";
+import { Wrapper, UncheckedIcon, CheckedIcon } from './ThemeChanger.components';
+import { LIGHT, DARK } from 'constants/themes';
 
-const BLACK_COLOR = "#000";
+const BLACK_COLOR = '#000';
 
-const ThemeChanger = ({ defaultTheme, onChangeTheme }) => {
-  const handleChange = checked => {
+function ThemeChanger({ defaultTheme, onChangeTheme }) {
+  function handleChange(checked) {
     onChangeTheme(checked ? DARK : LIGHT);
-  };
+  }
 
   return (
     <Wrapper>
@@ -23,6 +24,13 @@ const ThemeChanger = ({ defaultTheme, onChangeTheme }) => {
       />
     </Wrapper>
   );
+}
+
+const { string, func } = PropTypes;
+
+ThemeChanger.propTypes = {
+  defaultTheme: string.isRequired,
+  onChangeTheme: func.isRequired
 };
 
 export default ThemeChanger;

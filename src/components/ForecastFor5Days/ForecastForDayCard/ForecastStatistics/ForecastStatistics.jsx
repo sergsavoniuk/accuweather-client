@@ -1,8 +1,9 @@
-import React from "react";
-import LazyLoad from "react-lazyload";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import PropTypes from 'prop-types';
+import LazyLoad from 'react-lazyload';
+import { useTranslation } from 'react-i18next';
 
-import { formatImageSource } from "utils";
+import { formatImageSource } from 'utils';
 import {
   Wrapper,
   TimeOfDay,
@@ -10,17 +11,19 @@ import {
   Temperature,
   WeatherDescription,
   RealFeelTemperature
-} from "./ForecastStatistics.components";
+} from './ForecastStatistics.components';
 
-const ForecastStatistics = ({
+const BASE_PREFIX = 'ForecastForDay.Statistics';
+
+function ForecastStatistics({
   forecast: { temperature, realFeelTemperature, description, icon },
   title
-}) => {
+}) {
   const [t] = useTranslation();
   return (
     <Wrapper>
       <TimeOfDay>
-        {t(`ForecastForDay.Statistics.dayOfTime.${title}`).toUpperCase()}
+        {t(`${BASE_PREFIX}.dayOfTime.${title}`).toUpperCase()}
       </TimeOfDay>
       <LazyLoad height={45} once>
         <WeatherIcon src={formatImageSource(icon)} />
@@ -28,11 +31,23 @@ const ForecastStatistics = ({
       <Temperature>{temperature}&deg;</Temperature>
       <WeatherDescription>{description}</WeatherDescription>
       <RealFeelTemperature>
-        <span>{t("ForecastForDay.Statistics.realFeel")} </span>
+        <span>{t(`${BASE_PREFIX}.realFeel`)} </span>
         <span>{realFeelTemperature}&deg;</span>
       </RealFeelTemperature>
     </Wrapper>
   );
+}
+
+const { shape, string, number } = PropTypes;
+
+ForecastStatistics.propTypes = {
+  forecast: shape({
+    temperature: number.isRequired,
+    realFeelTemperature: number.isRequired,
+    description: string.isRequired,
+    icon: number.isRequired
+  }).isRequired,
+  title: string.isRequired
 };
 
 export default ForecastStatistics;

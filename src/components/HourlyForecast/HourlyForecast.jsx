@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { Table, TableHeader, TableBody } from "./HourlyForecastTable";
+import { Table, TableHeader, TableBody } from './HourlyForecastTable';
 
-function HourlyForecast({ data = [] }) {
+function HourlyForecast({ data }) {
   return (
     <Table>
       <TableHeader />
@@ -10,5 +10,13 @@ function HourlyForecast({ data = [] }) {
     </Table>
   );
 }
+
+HourlyForecast.propTypes = {
+  data: TableBody.propTypes.data
+};
+
+HourlyForecast.defaultProps = {
+  data: []
+};
 
 export default HourlyForecast;

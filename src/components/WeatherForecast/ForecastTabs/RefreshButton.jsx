@@ -1,8 +1,9 @@
-import React from "react";
-import { withTheme } from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withTheme } from 'styled-components';
 
-import { RefreshButton as StyledRefreshButton } from "./ForecastTabs.components";
-import { LIGHT, DARK } from "constants/themes";
+import { RefreshButton as StyledRefreshButton } from './ForecastTabs.components';
+import { LIGHT, DARK } from 'constants/themes';
 
 function RefreshButton({ onRefreshData: handleRefresh, theme }) {
   return (
@@ -11,10 +12,17 @@ function RefreshButton({ onRefreshData: handleRefresh, theme }) {
         src={`${process.env.PUBLIC_URL}/images/refresh_icon_${
           theme.themeName === LIGHT ? DARK : LIGHT
         }.png`}
-        alt="Refresh icon"
+        alt='Refresh icon'
       />
     </StyledRefreshButton>
   );
 }
+
+const { func, object } = PropTypes;
+
+RefreshButton.propTypes = {
+  onRefreshData: func.isRequired,
+  theme: object.isRequired
+};
 
 export default withTheme(RefreshButton);

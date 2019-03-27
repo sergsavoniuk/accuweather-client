@@ -1,12 +1,13 @@
-import React from "react";
-import { format } from "date-fns";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { format } from 'date-fns';
 
-import TemperatureCell from "./TemperatureCell";
-import LocalStorage from "utils/localStorage";
-import { getDateLocale, getTimePattern } from "utils";
+import TemperatureCell from './TemperatureCell';
+import LocalStorage from 'utils/localStorage';
+import { getDateLocale, getTimePattern } from 'utils';
 
-const TableBody = ({ data }) => {
-  const language = LocalStorage.get("language");
+function TableBody({ data }) {
+  const language = LocalStorage.get('language');
   const locale = getDateLocale(language);
   const pattern = getTimePattern(language);
 
@@ -23,6 +24,18 @@ const TableBody = ({ data }) => {
       ))}
     </tbody>
   );
+}
+
+const { arrayOf, shape, string, number } = PropTypes;
+
+TableBody.propTypes = {
+  data: arrayOf(
+    shape({
+      date: string.isRequired,
+      precipitationProbability: number.isRequired,
+      ...TemperatureCell.propTypes
+    }).isRequired
+  )
 };
 
 export default TableBody;

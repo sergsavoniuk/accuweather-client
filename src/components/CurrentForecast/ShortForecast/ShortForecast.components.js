@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const WeatherIcon = styled.img.attrs({
-  alt: "Weather icon"
+  alt: 'Weather icon'
 })`
   width: 75px;
   height: 45px;
@@ -26,7 +26,7 @@ export const Separator = styled.hr`
   display: block;
   width: 100%;
   height: 1px;
-  margin: 10px 0 15px 0;
+  margin: 10px 0 15px;
   border: 0;
   border-top: 1px solid ${({ theme }) => theme.secondaryColor};
 `;

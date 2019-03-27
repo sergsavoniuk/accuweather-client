@@ -1,9 +1,13 @@
-const LocalStorage = () => {
-  const PREFIX = "accuweather_data";
+function LocalStorage() {
+  const PREFIX = 'accuweather_data';
 
-  const serialize = (data = {}) => JSON.stringify(data);
+  function serialize(data = {}) {
+    return JSON.stringify(data);
+  }
 
-  const deserialize = (json = "{}") => JSON.parse(json);
+  function deserialize(json = '{}') {
+    return JSON.parse(json);
+  }
 
   return {
     set(key, value) {
@@ -38,6 +42,6 @@ const LocalStorage = () => {
       localStorage.clear();
     }
   };
-};
+}
 
 export default LocalStorage();

@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import SearchCity from "components/SearchCity";
-import WeatherForecast from "components/WeatherForecast";
-import ContentContext from "components/Contexts/ContentContext";
-import ContentErrorBoundary from "components/ErrorBoundaries";
-import { Wrapper } from "./Content.components";
-import LocalStorage from "utils/localStorage";
+import SearchCity from 'components/SearchCity';
+import WeatherForecast from 'components/WeatherForecast';
+import ContentContext from 'components/Contexts/ContentContext';
+import ContentErrorBoundary from 'components/ErrorBoundaries';
+import { Wrapper } from './Content.components';
+import LocalStorage from 'utils/localStorage';
 
-const Content = () => {
+function Content() {
   const [cityId, setCityId] = useState(null);
 
   useEffect(() => {
-    const cityId = LocalStorage.get("cityId");
+    const cityId = LocalStorage.get('cityId');
     if (cityId) {
       setCityId(cityId);
     }
@@ -22,11 +22,11 @@ const Content = () => {
       <ContentContext.Provider value={cityId}>
         <Wrapper>
           <SearchCity onSubmit={setCityId} />
-          {cityId && <WeatherForecast city={LocalStorage.get("city")} />}
+          {cityId && <WeatherForecast city={LocalStorage.get('city')} />}
         </Wrapper>
       </ContentContext.Provider>
     </ContentErrorBoundary>
   );
-};
+}
 
 export default Content;

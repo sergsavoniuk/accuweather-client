@@ -1,35 +1,54 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
-import Loader from "components/Loader";
-import useAutocomplete from "hooks/useAutocomplete";
+import Loader from 'components/Loader';
+import useAutocomplete from 'hooks/useAutocomplete';
 import {
   Wrapper,
   Input,
   DropdownList as List,
   DropdownListItem as ListItem
-} from "./AutocompleteSearch.components";
+} from './AutocompleteSearch.components';
 
-export const DropdownList = ({ items, loading, onSelect }) => (
-  <List>
-    {loading ? (
-      <ListItem>
-        <Loader alignment="0 auto" size={40} color="#848080" />
-      </ListItem>
-    ) : (
-      Object.keys(items).map(key => (
-        <ListItem
-          key={key}
-          onClick={() => {
-            onSelect({ key, value: items[key].city });
-          }}
-        >
-          {items[key].city}, {items[key].country}
+export function DropdownList({ items, loading, onSelect }) {
+  return (
+    <List>
+      {loading ? (
+        <ListItem>
+          <Loader alignment='0 auto' size={40} color='#848080' />
         </ListItem>
-      ))
-    )}
-  </List>
-);
+      ) : (
+        Object.keys(items).map(key => (
+          <ListItem
+            key={key}
+            onClick={() => {
+              onSelect({ key, value: items[key].city });
+            }}>
+            {items[key].city}, {items[key].country}
+          </ListItem>
+        ))
+      )}
+    </List>
+  );
+}
+
+const { shape, string, bool, func } = PropTypes;
+
+DropdownList.propTypes = {
+  items: shape({
+    [string]: shape({
+      county: string.isRequired,
+      city: string.isRequired
+    })
+  }),
+  loading: bool.isRequired,
+  onSelect: func.isRequired
+};
+
+DropdownList.defaultProps = {
+  items: {}
+};
 
 export default function AutocompleteSearch({ city: { value }, onChange }) {
   const [t] = useTranslation();
@@ -52,7 +71,7 @@ export default function AutocompleteSearch({ city: { value }, onChange }) {
     <Wrapper>
       <Input
         value={value}
-        placeholder={t("SearchInput.placeholder")}
+        placeholder={t('SearchInput.placeholder')}
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -63,3 +82,11 @@ export default function AutocompleteSearch({ city: { value }, onChange }) {
     </Wrapper>
   );
 }
+
+AutocompleteSearch.propTypes = {
+  city: shape({
+    key: string,
+    value: string
+  }).isRequired,
+  onChange: func.isRequired
+};

@@ -1,18 +1,19 @@
-import React from "react";
-import { format } from "date-fns";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { format } from 'date-fns';
 
-import LocalStorage from "utils/localStorage";
-import { getDateLocale } from "utils";
-import { StyledCardHeader } from "./CardHeader.components";
+import LocalStorage from 'utils/localStorage';
+import { getDateLocale } from 'utils';
+import { StyledCardHeader } from './CardHeader.components';
 
-const DATE_PATTERN = "dddd, D MMMM";
+const DATE_PATTERN = 'dddd, D MMMM';
 
-const CardHeader = ({ datetime }) => {
-  const language = LocalStorage.get("language");
+function CardHeader({ datetime }) {
+  const language = LocalStorage.get('language');
 
   const [weekday, date] = format(datetime, DATE_PATTERN, {
     locale: getDateLocale(language)
-  }).split(",");
+  }).split(',');
 
   return (
     <StyledCardHeader>
@@ -20,6 +21,10 @@ const CardHeader = ({ datetime }) => {
       <span>{date}</span>
     </StyledCardHeader>
   );
+}
+
+CardHeader.propTypes = {
+  datetime: PropTypes.string.isRequired
 };
 
 export default CardHeader;

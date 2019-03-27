@@ -1,7 +1,14 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Container } from "./Layout.components";
+import { Container } from './Layout.components';
 
-const Layout = ({ children }) => <Container>{children}</Container>;
+function Layout({ children }) {
+  return <Container>{children}</Container>;
+}
+
+Layout.propTypes = {
+  children: PropTypes.node
+};
 
 export default Layout;

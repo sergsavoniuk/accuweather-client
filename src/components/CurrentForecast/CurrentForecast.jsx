@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import DetailedForecast from "./DetailedForecast";
-import ShortForecast from "./ShortForecast";
-import { Wrapper } from "./CurrentForecast.components";
+import DetailedForecast from './DetailedForecast';
+import ShortForecast from './ShortForecast';
+import { Wrapper } from './CurrentForecast.components';
 
-function CurrentForecast({ data = {} }) {
+function CurrentForecast({ data }) {
   const {
     icon,
     temperature,
@@ -30,5 +31,16 @@ function CurrentForecast({ data = {} }) {
     )
   );
 }
+
+CurrentForecast.propTypes = {
+  data: PropTypes.shape({
+    ...ShortForecast.propTypes,
+    ...DetailedForecast.propTypes
+  })
+};
+
+CurrentForecast.defaultProps = {
+  data: {}
+};
 
 export default CurrentForecast;

@@ -1,7 +1,7 @@
-import { useEffect, useReducer, useRef } from "react";
-import axios from "axios";
+import { useEffect, useReducer, useRef } from 'react';
+import axios from 'axios';
 
-import LocalStorage from "utils/localStorage";
+import LocalStorage from 'utils/localStorage';
 
 const initialState = {
   data: null,
@@ -18,7 +18,7 @@ export default function useFetchForecast({ url, options, cb }) {
   const cancelTokenSource = useRef(null);
   const isMounted = useRef(false);
 
-  const fetchData = async () => {
+  async function fetchData() {
     try {
       setState({ ...initialState, loading: true });
 
@@ -35,7 +35,7 @@ export default function useFetchForecast({ url, options, cb }) {
 
       LocalStorage.set(options.filter, transformedData);
     } catch (error) {
-      /* 
+      /*
         if something went wrong during the process of fetching data and
         it's not an error caused by cancelling request then put the error in the state
       */
@@ -48,7 +48,7 @@ export default function useFetchForecast({ url, options, cb }) {
 
       isMounted.current = false;
     }
-  };
+  }
 
   useEffect(() => {
     isMounted.current = true;
@@ -82,7 +82,7 @@ export default function useFetchForecast({ url, options, cb }) {
 
 function formatUrl(
   url,
-  { cityId, language = "en", details = true, metric = true }
+  { cityId, language = 'en', details = true, metric = true }
 ) {
   return `${url}/${cityId}?${setQuery(language, details, metric)}`;
 }

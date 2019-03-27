@@ -1,9 +1,9 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-const headers = ["time", "temperature", "precipation"];
+const headers = ['time', 'temperature', 'precipation'];
 
-const TableHeader = () => {
+function TableHeader() {
   const [t] = useTranslation();
   return (
     <thead>
@@ -14,6 +14,6 @@ const TableHeader = () => {
       </tr>
     </thead>
   );
-};
+}
 
 export default TableHeader;

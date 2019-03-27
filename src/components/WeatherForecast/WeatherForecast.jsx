@@ -1,20 +1,25 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
-import ForecastTabs from "./ForecastTabs";
-import { Heading } from "./WeatherForecast.components";
+import ForecastTabs from './ForecastTabs';
+import { Heading } from './WeatherForecast.components';
 
-const WeatherForecast = ({ city }) => {
+function WeatherForecast({ city }) {
   const [t] = useTranslation();
 
   return (
     <>
       <Heading>
-        {t("WeatherForecast.heading")} {city}
+        {t('WeatherForecast.heading')} {city}
       </Heading>
       <ForecastTabs />
     </>
   );
+}
+
+WeatherForecast.propTypes = {
+  city: PropTypes.string.isRequired
 };
 
 export default WeatherForecast;

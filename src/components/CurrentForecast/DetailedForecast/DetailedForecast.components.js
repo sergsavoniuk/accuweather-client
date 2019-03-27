@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -11,7 +11,13 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Param = styled.span`
+export const Param = styled.div`
+  padding: 3px;
+  margin: 0;
+  ${({ role }) => role && 'margin: 20px 0 30px 0;'}
+`;
+
+export const Label = styled.span`
   color: ${({ theme }) => theme.secondaryColor};
 `;
 
