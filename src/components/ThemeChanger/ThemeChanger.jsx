@@ -15,6 +15,7 @@ function ThemeChanger({ defaultTheme, onChangeTheme }) {
   return (
     <Wrapper>
       <Switch
+        aria-label="Change theme"
         checked={defaultTheme === DARK}
         onChange={handleChange}
         offColor={BLACK_COLOR}

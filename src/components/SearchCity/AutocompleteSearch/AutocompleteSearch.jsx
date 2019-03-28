@@ -71,6 +71,7 @@ export default function AutocompleteSearch({ city: { value }, onChange }) {
   return (
     <Wrapper>
       <Input
+        aria-label="search"
         value={value}
         placeholder={t('SearchInput.placeholder')}
         onChange={handleChange}

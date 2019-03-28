@@ -10,6 +10,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    fallbackLng: false,
     lng: EN,
     load: 'languageOnly',
     keySeparator: false,

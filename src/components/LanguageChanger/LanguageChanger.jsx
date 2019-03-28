@@ -22,11 +22,13 @@ function LanguageChanger({ currentLanguage }) {
   return (
     <Wrapper>
       <RussianLanguageButton
+        aria-label="button"
         active={currentLanguage === RU}
         name={RU}
         onClick={handleLanguageChange}
       />
       <BritishLanguageButton
+        aria-label="button"
         active={currentLanguage === EN}
         name={EN}
         onClick={handleLanguageChange}
