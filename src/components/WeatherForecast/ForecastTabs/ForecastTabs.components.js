@@ -36,4 +36,6 @@ export const RefreshButton = styled.button`
   margin-bottom: 10px;
   outline: none;
   cursor: pointer;
+
+  ${props => props.disabled && 'cursor: not-allowed'}
 `;

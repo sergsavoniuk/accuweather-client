@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 
 import { RefreshButton as StyledRefreshButton } from './ForecastTabs.components';
 import { LIGHT, DARK } from 'constants/themes';
 
-function RefreshButton({ onRefreshData: handleRefresh, theme }) {
+function RefreshButton({ disabled, onRefreshData: handleRefresh, theme }) {
   return (
-    <StyledRefreshButton onClick={() => handleRefresh(true)}>
+    <StyledRefreshButton
+      disabled={disabled}
+      onClick={() => handleRefresh(true)}
+    >
       <img
         src={`${process.env.PUBLIC_URL}/images/refresh_icon_${
           theme.themeName === LIGHT ? DARK : LIGHT
@@ -18,11 +21,12 @@ function RefreshButton({ onRefreshData: handleRefresh, theme }) {
   );
 }
 
-const { func, object } = PropTypes;
+const { bool, func, object } = PropTypes;
 
 RefreshButton.propTypes = {
+  disabled: bool.isRequired,
   onRefreshData: func.isRequired,
   theme: object.isRequired,
 };
 
-export default withTheme(RefreshButton);
+export default memo(withTheme(RefreshButton));

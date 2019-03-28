@@ -8,16 +8,18 @@ import LocalStorage from 'utils/localStorage';
 import useFetchForecast from 'hooks/useFetchForecast';
 import { FORECAST_TABS as Tabs } from 'constants/forecastTabs';
 import { FORECAST_ENDPOINTS } from 'constants/endpoints';
-import { transformResponseData } from './utils';
+import { transformResponseData, clearResponse } from './utils';
+
+const { Current, Hourly, For5Days } = Tabs;
 
 const PAGES = {
-  [Tabs.Current]: lazy(() =>
+  [Current]: lazy(() =>
     import(/* webpackChunkName: "CurrentForecast" */ 'components/CurrentForecast'),
   ),
-  [Tabs.Hourly]: lazy(() =>
+  [Hourly]: lazy(() =>
     import(/* webpackChunkName: "HourlyForecast" */ 'components/HourlyForecast'),
   ),
-  [Tabs.For5Days]: lazy(() =>
+  [For5Days]: lazy(() =>
     import(/* webpackChunkName: "ForecastFor5Days" */ 'components/ForecastFor5Days'),
   ),
 };
@@ -28,13 +30,13 @@ export default function ForecastTabPanels({ activeTab }) {
 
   const cityId = useContext(ContentContext);
 
-  let { data, loading, error } = useFetchForecast({
+  const response = useFetchForecast({
     url: FORECAST_ENDPOINTS[activeTab],
     options: {
       cityId,
       language: LocalStorage.get('language'),
       filter: activeTab,
-      details: activeTab === Tabs.Hourly ? false : true,
+      details: activeTab === Hourly ? false : true,
       isFreshDataRequested,
     },
     cb: transformResponseData[activeTab],
@@ -45,15 +47,11 @@ export default function ForecastTabPanels({ activeTab }) {
   }
 
   if (prevActiveTab.current !== activeTab) {
-    data = undefined;
-    loading = false;
-    error = undefined;
+    clearResponse(response);
     prevActiveTab.current = activeTab;
   }
 
-  if (loading) {
-    return <Loader />;
-  }
+  const { data, loading, error } = response;
 
   if (error) {
     throw new Error(error);
@@ -62,10 +60,19 @@ export default function ForecastTabPanels({ activeTab }) {
   const Page = PAGES[activeTab];
 
   return (
-    <Suspense fallback={<Loader />}>
-      <RefreshButton onRefreshData={setFreshDataRequested} />
-      <Page data={data} />
-    </Suspense>
+    <>
+      <RefreshButton
+        disabled={loading === true}
+        onRefreshData={setFreshDataRequested}
+      />
+      {loading ? (
+        <Loader />
+      ) : (
+        <Suspense fallback={<Loader />}>
+          <Page data={data} />
+        </Suspense>
+      )}
+    </>
   );
 }
 

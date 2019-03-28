@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 
 import SearchCity from 'components/SearchCity';
 import WeatherForecast from 'components/WeatherForecast';
@@ -29,4 +29,4 @@ function Content() {
   );
 }
 
-export default Content;
+export default memo(Content);

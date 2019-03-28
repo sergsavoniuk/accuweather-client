@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { format } from 'date-fns';
 
 import LocalStorage from 'utils/localStorage';
@@ -51,4 +51,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);

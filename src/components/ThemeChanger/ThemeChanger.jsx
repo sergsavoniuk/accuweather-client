@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import Switch from 'react-switch';
 
@@ -33,4 +33,4 @@ ThemeChanger.propTypes = {
   onChangeTheme: func.isRequired,
 };
 
-export default ThemeChanger;
+export default memo(ThemeChanger);

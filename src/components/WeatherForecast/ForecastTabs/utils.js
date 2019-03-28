@@ -45,3 +45,7 @@ export const transformResponseData = {
     }));
   },
 };
+
+export function clearResponse(response) {
+  Object.keys(response).forEach(key => (response[key] = undefined));
+}

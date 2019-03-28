@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 import i18n from '../../i18n';
 
 import LocalStorage from 'utils/localStorage';
 import {
   Wrapper,
-  RussianFlagIcon,
-  BritainFlagIcon,
+  RussianLanguageButton,
+  BritishLanguageButton,
 } from './LanguageChanger.components';
 import { EN, RU } from 'constants/languages';
 import { FORECAST_TABS as FILTERS } from 'constants/forecastTabs';
 
-function LanguageChanger() {
+function LanguageChanger({ currentLanguage }) {
   function handleLanguageChange(event) {
     const language = event.target.name;
     LocalStorage.set('language', language);
@@ -20,10 +21,22 @@ function LanguageChanger() {
 
   return (
     <Wrapper>
-      <RussianFlagIcon name={RU} onClick={handleLanguageChange} />
-      <BritainFlagIcon name={EN} onClick={handleLanguageChange} />
+      <RussianLanguageButton
+        active={currentLanguage === RU}
+        name={RU}
+        onClick={handleLanguageChange}
+      />
+      <BritishLanguageButton
+        active={currentLanguage === EN}
+        name={EN}
+        onClick={handleLanguageChange}
+      />
     </Wrapper>
   );
 }
 
-export default LanguageChanger;
+LanguageChanger.propTypes = {
+  currentLanguage: PropTypes.string.isRequired,
+};
+
+export default memo(LanguageChanger);
