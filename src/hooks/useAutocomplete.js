@@ -1,17 +1,17 @@
-import { useEffect, useReducer, useRef } from "react";
-import axios from "axios";
+import { useEffect, useReducer, useRef } from 'react';
+import axios from 'axios';
 
 import {
   transformResponseData,
-  formatUrl
-} from "components/SearchCity/AutocompleteSearch/utils";
-import LocalStorage from "utils/localStorage";
+  formatUrl,
+} from 'components/SearchCity/AutocompleteSearch/utils';
+import LocalStorage from 'utils/localStorage';
 
 const initialState = {
   data: {},
   loading: false,
   error: null,
-  isOpen: true
+  isOpen: true,
 };
 
 function reducer(state, newState) {
@@ -42,23 +42,23 @@ export default function useAutocomplete(value, onChange) {
   }
 
   async function fetchData() {
-    if (value !== "") {
+    if (value !== '') {
       try {
         setState({ loading: true });
 
         const data = await axios(
           formatUrl({
             query: value,
-            language: LocalStorage.get("language")
+            language: LocalStorage.get('language'),
           }),
           {
-            cancelToken: cancelTokenSource.current.token
-          }
+            cancelToken: cancelTokenSource.current.token,
+          },
         );
 
         setState({
           data: transformResponseData(data),
-          loading: false
+          loading: false,
         });
       } catch (error) {
         if (!axios.isCancel(error)) {
@@ -85,6 +85,6 @@ export default function useAutocomplete(value, onChange) {
     ...state,
     handleChange,
     handleBlur,
-    handleFocus
+    handleFocus,
   };
 }

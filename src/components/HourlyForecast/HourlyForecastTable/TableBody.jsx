@@ -33,9 +33,9 @@ TableBody.propTypes = {
     shape({
       date: string.isRequired,
       precipitationProbability: number.isRequired,
-      ...TemperatureCell.propTypes
-    }).isRequired
-  )
+      ...TemperatureCell.propTypes,
+    }).isRequired,
+  ),
 };
 
 export default TableBody;

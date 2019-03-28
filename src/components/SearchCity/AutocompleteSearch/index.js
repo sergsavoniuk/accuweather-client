@@ -1,1 +1,1 @@
-export { default } from "./AutocompleteSearch";
+export { default } from './AutocompleteSearch';

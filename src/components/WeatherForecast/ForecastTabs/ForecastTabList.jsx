@@ -14,7 +14,8 @@ export default function ForecastTabList({ activeTab, onSelectTab }) {
           key={tabKey}
           active={Tabs[tabKey] === activeTab}
           name={Tabs[tabKey]}
-          onClick={event => onSelectTab(event.target.name)}>
+          onClick={event => onSelectTab(event.target.name)}
+        >
           {t(`ForecastTab.${tabKey}.label`)}
         </ForecastTabListItem>
       ))}
@@ -26,5 +27,5 @@ const { string, func } = PropTypes;
 
 ForecastTabList.propTypes = {
   activeTab: string.isRequired,
-  onSelectTab: func.isRequired
+  onSelectTab: func.isRequired,
 };

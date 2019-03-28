@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import { Wrapper, ErrorMessage } from "./ContentErrorBoundary.components";
+import { Wrapper, ErrorMessage } from './ContentErrorBoundary.components';
 
 export default class ContentErrorBoundary extends Component {
   state = {
-    hasError: null
+    hasError: null,
   };
 
   static getDerivedStateFromError(error) {

@@ -1,1 +1,1 @@
-export { default } from "./CurrentForecast";
+export { default } from './CurrentForecast';

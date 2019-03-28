@@ -18,13 +18,13 @@ const { number, string } = PropTypes;
 Loader.propTypes = {
   alignment: string,
   size: number,
-  color: string
+  color: string,
 };
 
 Loader.defaultProps = {
   alignment: undefined,
   size: undefined,
-  color: undefined
+  color: undefined,
 };
 
 export default Loader;

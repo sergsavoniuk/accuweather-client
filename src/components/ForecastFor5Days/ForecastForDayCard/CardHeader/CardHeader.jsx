@@ -12,7 +12,7 @@ function CardHeader({ datetime }) {
   const language = LocalStorage.get('language');
 
   const [weekday, date] = format(datetime, DATE_PATTERN, {
-    locale: getDateLocale(language)
+    locale: getDateLocale(language),
   }).split(',');
 
   return (
@@ -24,7 +24,7 @@ function CardHeader({ datetime }) {
 }
 
 CardHeader.propTypes = {
-  datetime: PropTypes.string.isRequired
+  datetime: PropTypes.string.isRequired,
 };
 
 export default CardHeader;

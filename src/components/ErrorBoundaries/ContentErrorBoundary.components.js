@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 
 export const ErrorMessage = styled.img.attrs({
   src: `${process.env.PUBLIC_URL}/images/oops.png`,
-  alt: "Something has gone wrong"
+  alt: 'Something has gone wrong',
 })`
   width: 100%;
   max-width: 800px;

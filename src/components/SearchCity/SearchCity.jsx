@@ -9,7 +9,7 @@ import { FORECAST_TABS as FILTERS } from 'constants/forecastTabs';
 
 const initialState = {
   key: null,
-  value: ''
+  value: '',
 };
 
 function SearchCityForm({ onSubmit }) {
@@ -39,7 +39,7 @@ function SearchCityForm({ onSubmit }) {
 }
 
 SearchCityForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default SearchCityForm;

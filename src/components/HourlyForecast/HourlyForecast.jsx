@@ -12,11 +12,11 @@ function HourlyForecast({ data }) {
 }
 
 HourlyForecast.propTypes = {
-  data: TableBody.propTypes.data
+  data: TableBody.propTypes.data,
 };
 
 HourlyForecast.defaultProps = {
-  data: []
+  data: [],
 };
 
 export default HourlyForecast;

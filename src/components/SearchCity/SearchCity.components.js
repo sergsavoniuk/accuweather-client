@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Form = styled.form`
   width: 40%;
@@ -11,7 +11,7 @@ export const Form = styled.form`
 `;
 
 export const Button = styled.button.attrs({
-  type: "submit"
+  type: 'submit',
 })`
   height: 50px;
   background-color: ${({ theme }) => theme.button.backgroundColor};

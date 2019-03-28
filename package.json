@@ -6,7 +6,6 @@
     "axios": "^0.18.0",
     "cross-env": "^5.2.0",
     "date-fns": "^1.30.1",
-    "express": "^4.16.4",
     "i18next": "^15.0.4",
     "i18next-browser-languagedetector": "^3.0.1",
     "i18next-xhr-backend": "^2.0.1",
@@ -21,6 +20,7 @@
     "start": "cross-env NODE_PATH=src/ react-scripts start",
     "build": "cross-env NODE_PATH=src/ react-scripts build",
     "build:run": "yarn build && node ./src/server.js",
+    "format": "prettier \"src/**/*.{js,jsx}\" --write",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -34,7 +34,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "prettier": "^1.16.4",
     "prop-types": "^15.7.2",
+    "express": "^4.16.4",
     "styled-components": "^4.1.3"
   }
 }

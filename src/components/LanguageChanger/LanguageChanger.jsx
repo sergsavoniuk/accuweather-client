@@ -5,7 +5,7 @@ import LocalStorage from 'utils/localStorage';
 import {
   Wrapper,
   RussianFlagIcon,
-  BritainFlagIcon
+  BritainFlagIcon,
 } from './LanguageChanger.components';
 import { EN, RU } from 'constants/languages';
 import { FORECAST_TABS as FILTERS } from 'constants/forecastTabs';

@@ -1,5 +1,5 @@
 export const FORECAST_TABS = {
-  Current: "current",
-  Hourly: "hourly",
-  For5Days: "for5Days"
+  Current: 'current',
+  Hourly: 'hourly',
+  For5Days: 'for5Days',
 };

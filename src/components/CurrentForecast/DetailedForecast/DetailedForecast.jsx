@@ -12,12 +12,12 @@ function DetailedForecast({
   realFeelTemperature,
   humidity,
   wind,
-  visibility
+  visibility,
 }) {
   const [t] = useTranslation();
   return (
     <Wrapper>
-      <Param role='heading'>
+      <Param role="heading">
         <Value>{description}</Value>
       </Param>
       <Param>
@@ -52,9 +52,9 @@ DetailedForecast.propTypes = {
   humidity: number.isRequired,
   wind: shape({
     direction: string.isRequired,
-    speed: number.isRequired
+    speed: number.isRequired,
   }).isRequired,
-  visibility: number.isRequired
+  visibility: number.isRequired,
 };
 
 export default DetailedForecast;

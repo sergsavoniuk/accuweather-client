@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Table = styled.table`
   border: 1px solid ${({ theme }) => theme.table.borderColor};
@@ -80,7 +80,7 @@ export const Temperature = styled.span`
 `;
 
 export const WeatherIcon = styled.img.attrs({
-  alt: "Weather Icon"
+  alt: 'Weather Icon',
 })`
   width: 75px;
   height: 45px;

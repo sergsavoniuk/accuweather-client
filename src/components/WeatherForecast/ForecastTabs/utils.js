@@ -1,4 +1,4 @@
-import { FORECAST_TABS as Tabs } from "constants/forecastTabs";
+import { FORECAST_TABS as Tabs } from 'constants/forecastTabs';
 
 export const transformResponseData = {
   [Tabs.Current](data) {
@@ -10,7 +10,7 @@ export const transformResponseData = {
       forecast.humidity = item.RelativeHumidity;
       forecast.wind = {
         speed: item.Wind.Speed.Value,
-        direction: item.Wind.Direction.Localized
+        direction: item.Wind.Direction.Localized,
       };
       forecast.visibility = item.Visibility.Value;
       return forecast;
@@ -23,7 +23,7 @@ export const transformResponseData = {
       icon: item.WeatherIcon,
       description: item.IconPhrase,
       date: item.DateTime,
-      precipitationProbability: item.PrecipitationProbability
+      precipitationProbability: item.PrecipitationProbability,
     }));
   },
 
@@ -34,14 +34,14 @@ export const transformResponseData = {
         temperature: item.Temperature.Maximum.Value,
         realFeelTemperature: item.RealFeelTemperature.Maximum.Value,
         description: item.Day.IconPhrase,
-        icon: item.Day.Icon
+        icon: item.Day.Icon,
       },
       night: {
         temperature: item.Temperature.Minimum.Value,
         realFeelTemperature: item.RealFeelTemperature.Minimum.Value,
         description: item.Night.IconPhrase,
-        icon: item.Night.Icon
-      }
+        icon: item.Night.Icon,
+      },
     }));
-  }
+  },
 };

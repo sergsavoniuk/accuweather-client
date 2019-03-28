@@ -12,7 +12,7 @@ function RefreshButton({ onRefreshData: handleRefresh, theme }) {
         src={`${process.env.PUBLIC_URL}/images/refresh_icon_${
           theme.themeName === LIGHT ? DARK : LIGHT
         }.png`}
-        alt='Refresh icon'
+        alt="Refresh icon"
       />
     </StyledRefreshButton>
   );
@@ -22,7 +22,7 @@ const { func, object } = PropTypes;
 
 RefreshButton.propTypes = {
   onRefreshData: func.isRequired,
-  theme: object.isRequired
+  theme: object.isRequired,
 };
 
 export default withTheme(RefreshButton);

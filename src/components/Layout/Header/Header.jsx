@@ -8,7 +8,7 @@ import {
   Brand as StyledBrand,
   BrandLogo,
   BrandName,
-  Wrapper
+  Wrapper,
 } from './Header.components';
 import { getDateLocale, getTimePattern } from 'utils';
 
@@ -35,7 +35,7 @@ export function DateTime() {
 
 export function Brand() {
   return (
-    <StyledBrand as='a' href='#'>
+    <StyledBrand as="a" href="#">
       <BrandLogo />
       <BrandName>AccuWeather Client</BrandName>
     </StyledBrand>

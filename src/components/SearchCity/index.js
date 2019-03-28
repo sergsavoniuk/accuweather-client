@@ -1,1 +1,1 @@
-export { default } from "./SearchCity";
+export { default } from './SearchCity';

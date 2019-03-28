@@ -1,1 +1,1 @@
-export { default } from "./ForecastStatistics";
+export { default } from './ForecastStatistics';

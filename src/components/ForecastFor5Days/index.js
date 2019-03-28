@@ -1,1 +1,1 @@
-export { default } from "./ForecastFor5Days";
+export { default } from './ForecastFor5Days';

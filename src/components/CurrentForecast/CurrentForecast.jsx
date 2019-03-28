@@ -13,7 +13,7 @@ function CurrentForecast({ data }) {
     realFeelTemperature,
     humidity,
     wind,
-    visibility
+    visibility,
   } = data;
 
   return (
@@ -35,12 +35,12 @@ function CurrentForecast({ data }) {
 CurrentForecast.propTypes = {
   data: PropTypes.shape({
     ...ShortForecast.propTypes,
-    ...DetailedForecast.propTypes
-  })
+    ...DetailedForecast.propTypes,
+  }),
 };
 
 CurrentForecast.defaultProps = {
-  data: {}
+  data: {},
 };
 
 export default CurrentForecast;

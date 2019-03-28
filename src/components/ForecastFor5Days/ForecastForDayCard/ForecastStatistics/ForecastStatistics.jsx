@@ -10,14 +10,14 @@ import {
   WeatherIcon,
   Temperature,
   WeatherDescription,
-  RealFeelTemperature
+  RealFeelTemperature,
 } from './ForecastStatistics.components';
 
 const BASE_PREFIX = 'ForecastForDay.Statistics';
 
 function ForecastStatistics({
   forecast: { temperature, realFeelTemperature, description, icon },
-  title
+  title,
 }) {
   const [t] = useTranslation();
   return (
@@ -45,9 +45,9 @@ ForecastStatistics.propTypes = {
     temperature: number.isRequired,
     realFeelTemperature: number.isRequired,
     description: string.isRequired,
-    icon: number.isRequired
+    icon: number.isRequired,
   }).isRequired,
-  title: string.isRequired
+  title: string.isRequired,
 };
 
 export default ForecastStatistics;

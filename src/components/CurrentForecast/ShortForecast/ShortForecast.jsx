@@ -7,7 +7,7 @@ import {
   Wrapper,
   Separator,
   Temperature,
-  WeatherIcon
+  WeatherIcon,
 } from './ShortForecast.components';
 
 function ShortForecast({ icon, temperature }) {
@@ -26,7 +26,7 @@ const { number } = PropTypes;
 
 ShortForecast.propTypes = {
   icon: number.isRequired,
-  temperature: number.isRequired
+  temperature: number.isRequired,
 };
 
 export default ShortForecast;

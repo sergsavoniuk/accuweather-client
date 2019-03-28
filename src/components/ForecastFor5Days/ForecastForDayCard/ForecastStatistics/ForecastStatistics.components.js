@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   width: 50%;
@@ -15,7 +15,7 @@ export const TimeOfDay = styled.span`
 `;
 
 export const WeatherIcon = styled.img.attrs({
-  alt: "Weather icon"
+  alt: 'Weather icon',
 })`
   width: 75px;
   height: 45px;

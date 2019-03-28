@@ -8,7 +8,7 @@ import {
   Temperature,
   WeatherIcon,
   Wrapper,
-  InnerWrapper
+  InnerWrapper,
 } from './HourlyForecastTable.components';
 
 function TemperatureCell({ icon, temperature, description }) {
@@ -30,7 +30,7 @@ const { number, string } = PropTypes;
 TemperatureCell.propTypes = {
   icon: number.isRequired,
   temperature: number.isRequired,
-  description: string.isRequired
+  description: string.isRequired,
 };
 
 export default TemperatureCell;

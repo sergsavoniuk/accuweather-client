@@ -19,7 +19,7 @@ function WeatherForecast({ city }) {
 }
 
 WeatherForecast.propTypes = {
-  city: PropTypes.string.isRequired
+  city: PropTypes.string.isRequired,
 };
 
 export default WeatherForecast;

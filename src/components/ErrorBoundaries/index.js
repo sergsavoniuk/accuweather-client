@@ -1,1 +1,1 @@
-export { default } from "./ContentErrorBoundary";
+export { default } from './ContentErrorBoundary';

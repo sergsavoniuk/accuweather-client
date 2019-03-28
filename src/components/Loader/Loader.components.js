@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
 const circleBounceDelay = keyframes`
   0%,
@@ -13,9 +13,9 @@ const circleBounceDelay = keyframes`
 
 export const Wrapper = styled.div`
   position: relative;
-  width: ${({ size }) => (size ? `${size}px` : "60px")};
-  height: ${({ size }) => (size ? `${size}px` : "60px")};
-  margin: ${({ alignment }) => alignment || "100px auto"};
+  width: ${({ size }) => (size ? `${size}px` : '60px')};
+  height: ${({ size }) => (size ? `${size}px` : '60px')};
+  margin: ${({ alignment }) => alignment || '100px auto'};
 
   div:nth-child(2) {
     transform: rotate(30deg);
@@ -114,12 +114,12 @@ export const Child = styled.div`
   top: 0;
 
   :before {
-    content: "";
+    content: '';
     display: block;
     margin: 0 auto;
     width: 15%;
     height: 15%;
-    background-color: ${({ color }) => color || "#e1e1e1"};
+    background-color: ${({ color }) => color || '#e1e1e1'};
     border-radius: 100%;
     animation: ${circleBounceDelay} 1.2s infinite ease-in-out both;
   }

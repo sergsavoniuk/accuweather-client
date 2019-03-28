@@ -12,14 +12,14 @@ import { transformResponseData } from './utils';
 
 const PAGES = {
   [Tabs.Current]: lazy(() =>
-    import(/* webpackChunkName: "CurrentForecast" */ 'components/CurrentForecast')
+    import(/* webpackChunkName: "CurrentForecast" */ 'components/CurrentForecast'),
   ),
   [Tabs.Hourly]: lazy(() =>
-    import(/* webpackChunkName: "HourlyForecast" */ 'components/HourlyForecast')
+    import(/* webpackChunkName: "HourlyForecast" */ 'components/HourlyForecast'),
   ),
   [Tabs.For5Days]: lazy(() =>
-    import(/* webpackChunkName: "ForecastFor5Days" */ 'components/ForecastFor5Days')
-  )
+    import(/* webpackChunkName: "ForecastFor5Days" */ 'components/ForecastFor5Days'),
+  ),
 };
 
 export default function ForecastTabPanels({ activeTab }) {
@@ -35,9 +35,9 @@ export default function ForecastTabPanels({ activeTab }) {
       language: LocalStorage.get('language'),
       filter: activeTab,
       details: activeTab === Tabs.Hourly ? false : true,
-      isFreshDataRequested
+      isFreshDataRequested,
     },
-    cb: transformResponseData[activeTab]
+    cb: transformResponseData[activeTab],
   });
 
   if (isFreshDataRequested) {
@@ -70,5 +70,5 @@ export default function ForecastTabPanels({ activeTab }) {
 }
 
 ForecastTabPanels.propTypes = {
-  activeTab: PropTypes.string.isRequired
+  activeTab: PropTypes.string.isRequired,
 };

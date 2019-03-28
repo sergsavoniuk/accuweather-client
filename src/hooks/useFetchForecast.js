@@ -6,7 +6,7 @@ import LocalStorage from 'utils/localStorage';
 const initialState = {
   data: null,
   loading: false,
-  error: null
+  error: null,
 };
 
 const reducer = (state, newState) => {
@@ -23,14 +23,14 @@ export default function useFetchForecast({ url, options, cb }) {
       setState({ ...initialState, loading: true });
 
       const { data } = await axios.get(formatUrl(url, options), {
-        cancelToken: cancelTokenSource.current.token
+        cancelToken: cancelTokenSource.current.token,
       });
 
       const transformedData = cb(data);
 
       setState({
         data: transformedData,
-        loading: false
+        loading: false,
       });
 
       LocalStorage.set(options.filter, transformedData);
@@ -42,7 +42,7 @@ export default function useFetchForecast({ url, options, cb }) {
       if (isMounted.current && !axios.isCancel(error)) {
         setState({
           loading: false,
-          error
+          error,
         });
       }
 
@@ -74,7 +74,7 @@ export default function useFetchForecast({ url, options, cb }) {
     options.cityId,
     options.language,
     options.filter,
-    options.isFreshDataRequested
+    options.isFreshDataRequested,
   ]);
 
   return state;
@@ -82,7 +82,7 @@ export default function useFetchForecast({ url, options, cb }) {
 
 function formatUrl(
   url,
-  { cityId, language = 'en', details = true, metric = true }
+  { cityId, language = 'en', details = true, metric = true },
 ) {
   return `${url}/${cityId}?${setQuery(language, details, metric)}`;
 }

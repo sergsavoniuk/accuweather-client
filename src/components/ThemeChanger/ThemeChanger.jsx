@@ -30,7 +30,7 @@ const { string, func } = PropTypes;
 
 ThemeChanger.propTypes = {
   defaultTheme: string.isRequired,
-  onChangeTheme: func.isRequired
+  onChangeTheme: func.isRequired,
 };
 
 export default ThemeChanger;

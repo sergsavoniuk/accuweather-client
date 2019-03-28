@@ -6,7 +6,7 @@ import ForecastStatistics from './ForecastStatistics';
 import {
   CardContainer,
   Wrapper,
-  Separator
+  Separator,
 } from './ForecastForDayCard.components';
 
 function ForecastForDayCard({ forecast: { date, day, night } }) {
@@ -14,9 +14,9 @@ function ForecastForDayCard({ forecast: { date, day, night } }) {
     <CardContainer>
       <CardHeader datetime={date} />
       <Wrapper>
-        <ForecastStatistics forecast={day} title='day' />
+        <ForecastStatistics forecast={day} title="day" />
         <Separator />
-        <ForecastStatistics forecast={night} title='night' />
+        <ForecastStatistics forecast={night} title="night" />
       </Wrapper>
     </CardContainer>
   );
@@ -28,8 +28,8 @@ ForecastForDayCard.propTypes = {
   forecast: shape({
     date: string.isRequired,
     day: shape(ForecastStatistics.propTypes.forecast),
-    night: shape(ForecastStatistics.propTypes.forecast)
-  })
+    night: shape(ForecastStatistics.propTypes.forecast),
+  }),
 };
 
 export default ForecastForDayCard;

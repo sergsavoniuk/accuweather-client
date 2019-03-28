@@ -15,8 +15,8 @@ function LocalStorage() {
         PREFIX,
         serialize({
           ...deserialize(localStorage.getItem(PREFIX) || undefined),
-          [key]: value
-        })
+          [key]: value,
+        }),
       );
     },
 
@@ -40,7 +40,7 @@ function LocalStorage() {
 
     clear() {
       localStorage.clear();
-    }
+    },
   };
 }
 

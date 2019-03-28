@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const WeatherIcon = styled.img.attrs({
-  alt: 'Weather icon'
+  alt: 'Weather icon',
 })`
   width: 75px;
   height: 45px;

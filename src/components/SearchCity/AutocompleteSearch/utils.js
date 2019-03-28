@@ -4,7 +4,7 @@ export function transformResponseData(data) {
   return data.data.reduce((target, item) => {
     target[item.Key] = {
       city: item.LocalizedName,
-      country: item.Country.LocalizedName
+      country: item.Country.LocalizedName,
     };
     return target;
   }, {});

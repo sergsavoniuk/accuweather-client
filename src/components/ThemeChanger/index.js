@@ -1,1 +1,1 @@
-export { default } from "./ThemeChanger";
+export { default } from './ThemeChanger';

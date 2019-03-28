@@ -1,1 +1,1 @@
-export { default } from "./HourlyForecast";
+export { default } from './HourlyForecast';

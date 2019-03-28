@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Header = styled.header`
   width: 100%;
@@ -24,7 +24,7 @@ export const Brand = styled.div`
 
 export const BrandLogo = styled.img.attrs({
   src: `${process.env.PUBLIC_URL}/images/logo.png`,
-  alt: "Application Logo"
+  alt: 'Application Logo',
 })``;
 
 export const BrandName = styled.h1`

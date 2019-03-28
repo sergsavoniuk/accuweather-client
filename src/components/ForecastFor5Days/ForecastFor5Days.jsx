@@ -15,11 +15,11 @@ function ForecastFor5Days({ data }) {
 }
 
 ForecastFor5Days.propTypes = {
-  data: PropTypes.arrayOf(ForecastForDayCard.propTypes.forecast)
+  data: PropTypes.arrayOf(ForecastForDayCard.propTypes.forecast),
 };
 
 ForecastFor5Days.defaultProps = {
-  data: []
+  data: [],
 };
 
 export default ForecastFor5Days;

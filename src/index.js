@@ -9,5 +9,5 @@ render(
   <Suspense fallback={<Loader />}>
     <Root />
   </Suspense>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

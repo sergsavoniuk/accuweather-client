@@ -8,7 +8,7 @@ import {
   Wrapper,
   Input,
   DropdownList as List,
-  DropdownListItem as ListItem
+  DropdownListItem as ListItem,
 } from './AutocompleteSearch.components';
 
 export function DropdownList({ items, loading, onSelect }) {
@@ -16,7 +16,7 @@ export function DropdownList({ items, loading, onSelect }) {
     <List>
       {loading ? (
         <ListItem>
-          <Loader alignment='0 auto' size={40} color='#848080' />
+          <Loader alignment="0 auto" size={40} color="#848080" />
         </ListItem>
       ) : (
         Object.keys(items).map(key => (
@@ -24,7 +24,8 @@ export function DropdownList({ items, loading, onSelect }) {
             key={key}
             onClick={() => {
               onSelect({ key, value: items[key].city });
-            }}>
+            }}
+          >
             {items[key].city}, {items[key].country}
           </ListItem>
         ))
@@ -39,15 +40,15 @@ DropdownList.propTypes = {
   items: shape({
     [string]: shape({
       county: string.isRequired,
-      city: string.isRequired
-    })
+      city: string.isRequired,
+    }),
   }),
   loading: bool.isRequired,
-  onSelect: func.isRequired
+  onSelect: func.isRequired,
 };
 
 DropdownList.defaultProps = {
-  items: {}
+  items: {},
 };
 
 export default function AutocompleteSearch({ city: { value }, onChange }) {
@@ -60,7 +61,7 @@ export default function AutocompleteSearch({ city: { value }, onChange }) {
     isOpen,
     handleChange,
     handleBlur,
-    handleFocus
+    handleFocus,
   } = useAutocomplete(value, onChange);
 
   if (error) {
@@ -86,7 +87,7 @@ export default function AutocompleteSearch({ city: { value }, onChange }) {
 AutocompleteSearch.propTypes = {
   city: shape({
     key: string,
-    value: string
+    value: string,
   }).isRequired,
-  onChange: func.isRequired
+  onChange: func.isRequired,
 };
