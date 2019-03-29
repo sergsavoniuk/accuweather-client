@@ -14,9 +14,12 @@ This is a minimalistic app that allows you to view a weather forecast. It uses [
 
 ## Features
 
-- ⚛ **React** — 16.8 with Hooks
-- 💅 **CSS** — Styled Components
-- 💅 **Theming** - Dark and Light
+- **React** — 16.8 with Hooks
+- **CSS** — Styled Components
+- **Theming** - Dark and Light
+- **Localization** - 🇬🇧/🇷🇺
+- **Service Worker**
+- **Offline mode**
 
 ## Getting started
 
@@ -50,6 +53,10 @@ Your app is ready to be deployed!
 ### `yarn build:run`
 
 Builds the app for production to the `build` folder, starts a server at `http://localhost:8080` that serves files from the `build` folder.
+
+### `yarn format`
+
+Format code using Prettier - opnitionated code formatter.
 
 ### `yarn test`
 
