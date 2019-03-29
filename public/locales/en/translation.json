@@ -16,5 +16,8 @@
   "ForecastForDay.Statistics.realFeel": "Real Feel",
   "HourlyForecast.column.time": "Time",
   "HourlyForecast.column.temperature": "Temperature",
-  "HourlyForecast.column.precipation": "Precipation"
+  "HourlyForecast.column.precipation": "Precipation",
+  "NetworkOfflineMessage.text": "Offline Mode",
+  "NetworkOfflineNotification.title": "Network notification",
+  "NetworkOfflineNotification.body": "Please turn on the Internet if you want to get access to all functionality."
 }

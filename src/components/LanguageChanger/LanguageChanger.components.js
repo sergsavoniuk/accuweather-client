@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  position: absolute;
+  /* position: absolute;
   top: 13px;
-  left: 10px;
+  left: 10px; */
 `;
 
 const Button = styled.button`

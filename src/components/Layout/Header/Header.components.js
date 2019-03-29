@@ -4,7 +4,6 @@ export const Header = styled.header`
   width: 100%;
   display: flex;
   align-items: center;
-  margin-top: 20px;
   border-bottom: 1px solid #4d4d4f;
 
   @media (max-width: 768px) {

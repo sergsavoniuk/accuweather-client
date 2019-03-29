@@ -1,7 +1,9 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
+import NetworkNotificationContext from 'components/Contexts/NetworkNotificationContext';
+import NetworkStatusContext from 'components/Contexts/NetworkStatusContext';
 import SearchCityAutocomplete from './AutocompleteSearch';
 import LocalStorage from 'utils/localStorage';
 import { Form, Button } from './SearchCity.components';
@@ -16,18 +18,26 @@ function SearchCityForm({ onSubmit }) {
   const [city, setCity] = useState(initialState);
   const [t] = useTranslation();
 
+  const setShowOfflineNotification = useContext(NetworkNotificationContext);
+  const isOnline = useContext(NetworkStatusContext);
+
   function handleSubmit(event) {
     event.preventDefault();
-    setCity(initialState);
 
-    // Remove weather forecast for previous city
-    LocalStorage.remove(Object.values(FILTERS));
+    if (isOnline) {
+      setCity(initialState);
 
-    // Update local storage, set new city
-    LocalStorage.set('cityId', city.key);
-    LocalStorage.set('city', city.value);
+      // Remove weather forecast for previous city
+      LocalStorage.remove(Object.values(FILTERS));
 
-    onSubmit(city.key);
+      // Update local storage, set new city
+      LocalStorage.set('cityId', city.key);
+      LocalStorage.set('city', city.value);
+
+      onSubmit(city.key);
+    } else {
+      setShowOfflineNotification(true);
+    }
   }
 
   return (

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  position: absolute;
+  /* position: absolute;
   top: 10px;
-  right: 10px;
+  right: 10px; */
 `;
 
 export const UncheckedIcon = styled.img.attrs({

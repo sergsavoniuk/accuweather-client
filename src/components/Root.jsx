@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import NetworkStatusContext from './Contexts/NetworkStatusContext';
+import NetworkNotificationContext from './Contexts/NetworkNotificationContext';
 
 import Layout from 'components/Layout';
 import Header from 'components/Layout/Header';
 import Content from 'components/Layout/Content';
-import ThemeChanger from './ThemeChanger';
-import LanguageChanger from './LanguageChanger/LanguageChanger';
+import Settings from 'components/Settings';
 import LocalStorage from 'utils/localStorage';
 import Themes, { DARK } from 'constants/themes';
+import useNetworkStatus from 'hooks/useNetworkStatus';
+import useOfflineNotification from 'hooks/useOfflineNotification';
 import { useTranslation } from 'react-i18next';
+import NetworkOfflineNotification from './Notifications/NetworkOfflineNotification/NetworkOfflineNotification';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -27,7 +31,15 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 function WeatherApp() {
-  const [theme, setTheme] = useState(DARK);
+  const theme = useState(DARK);
+
+  const isOnline = useNetworkStatus();
+
+  const [
+    showOfflineNotification,
+    setShowOfflineNotification,
+  ] = useOfflineNotification();
+
   // eslint-disable-next-line no-unused-vars
   const [t, i18n] = useTranslation();
 
@@ -43,12 +55,22 @@ function WeatherApp() {
   return (
     <>
       <GlobalStyles />
-      <ThemeProvider theme={Themes[theme]}>
+      {showOfflineNotification && <NetworkOfflineNotification />}
+      <ThemeProvider theme={Themes[theme[0]]}>
         <Layout>
-          <LanguageChanger currentLanguage={i18n.language} />
-          <ThemeChanger defaultTheme={theme} onChangeTheme={setTheme} />
+          <Settings
+            currentLanguage={i18n.language}
+            networkStatus={isOnline}
+            theme={theme}
+          />
           <Header />
-          <Content />
+          <NetworkStatusContext.Provider value={isOnline}>
+            <NetworkNotificationContext.Provider
+              value={setShowOfflineNotification}
+            >
+              <Content />
+            </NetworkNotificationContext.Provider>
+          </NetworkStatusContext.Provider>
         </Layout>
       </ThemeProvider>
     </>

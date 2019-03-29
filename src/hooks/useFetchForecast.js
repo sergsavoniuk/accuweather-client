@@ -1,6 +1,8 @@
-import { useEffect, useReducer, useRef } from 'react';
+import { useEffect, useReducer, useRef, useContext } from 'react';
 import axios from 'axios';
 
+import NetworkNotificationContext from 'components/Contexts/NetworkNotificationContext';
+import NetworkStatusContext from 'components/Contexts/NetworkStatusContext';
 import LocalStorage from 'utils/localStorage';
 
 const initialState = {
@@ -14,6 +16,9 @@ const reducer = (state, newState) => {
 };
 
 export default function useFetchForecast({ url, options, cb }) {
+  const setShowOfflineNotification = useContext(NetworkNotificationContext);
+  const isOnline = useContext(NetworkStatusContext);
+
   const [state, setState] = useReducer(reducer, initialState);
   const cancelTokenSource = useRef(null);
   const isMounted = useRef(false);
@@ -59,8 +64,11 @@ export default function useFetchForecast({ url, options, cb }) {
       setState({ data: dataFromLocalStorage });
     } else {
       cancelTokenSource.current = axios.CancelToken.source();
-
-      fetchData();
+      if (isOnline) {
+        fetchData();
+      } else {
+        setShowOfflineNotification(true);
+      }
     }
     return () => {
       // cancel pending request before component will unmount

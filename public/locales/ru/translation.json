@@ -16,5 +16,8 @@
   "ForecastForDay.Statistics.realFeel": "Ощущается",
   "HourlyForecast.column.time": "Время",
   "HourlyForecast.column.temperature": "Температура",
-  "HourlyForecast.column.precipation": "Осадки"
+  "HourlyForecast.column.precipation": "Осадки",
+  "NetworkOfflineMessage.text": "Оффлайн Режим",
+  "NetworkOfflineNotification.title": "Сетевое уведомление",
+  "NetworkOfflineNotification.body": "Пожалуйста, включите Интернет, если вы хотите получить доступ ко всей функциональности."
 }
