@@ -8,10 +8,11 @@ script:
   - npm run build
 
 deploy:
-  provider: pages
+  provider: heroku
   skip_cleanup: true
   keep_history: true
-  github_token: $github_token
+  api-key:
+    secure: $HEROKU_API_KEY
+  app: accuweather-client
   local_dir: build
-  on:
-    branch: master
+  on: master
