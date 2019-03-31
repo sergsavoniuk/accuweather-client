@@ -10,6 +10,7 @@
     "i18next": "^15.0.4",
     "i18next-browser-languagedetector": "^3.0.1",
     "i18next-xhr-backend": "^2.0.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-i18next": "^10.2.0",
@@ -41,7 +42,6 @@
     "express": "^4.16.4",
     "gh-pages": "^2.0.1",
     "prettier": "^1.16.4",
-    "prop-types": "^15.7.2",
     "sw-precache": "^5.2.1"
   }
 }
