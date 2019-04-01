@@ -2,7 +2,10 @@
   "name": "accuweather-client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sergsavoniuk.github.io/accuweather-client",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergsavoniuk/accuweather-client.git"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "cross-env": "^5.2.0",
@@ -40,7 +43,6 @@
   ],
   "devDependencies": {
     "express": "^4.16.4",
-    "gh-pages": "^2.0.1",
     "prettier": "^1.16.4",
     "sw-precache": "^5.2.1"
   }
