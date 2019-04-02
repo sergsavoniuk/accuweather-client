@@ -8,5 +8,11 @@ module.exports = {
   ],
   swFilePath: './build/service-worker.js',
   stripPrefix: 'build/',
-  handleFetch: false,
+  runtimeCaching: [
+    {
+      urlPattern: /https:\/\/developer.accuweather.com\/sites\/default\/files/,
+      handler: 'networkFirst',
+    },
+  ],
+  // handleFetch: false,
 };
