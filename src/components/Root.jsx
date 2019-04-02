@@ -12,7 +12,7 @@ import Themes, { DARK } from 'constants/themes';
 import useNetworkStatus from 'hooks/useNetworkStatus';
 import useOfflineNotification from 'hooks/useOfflineNotification';
 import { useTranslation } from 'react-i18next';
-import NetworkOfflineNotification from './Notifications/NetworkOfflineNotification/NetworkOfflineNotification';
+import NetworkOfflineNotification from './Notifications/NetworkOfflineNotification';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -43,14 +43,17 @@ function WeatherApp() {
   // eslint-disable-next-line no-unused-vars
   const [t, i18n] = useTranslation();
 
-  useEffect(() => {
-    let currentLanguage = LocalStorage.get('language');
-    if (!currentLanguage) {
-      LocalStorage.set('language', i18n.language);
-      currentLanguage = i18n.language;
-    }
-    i18n.changeLanguage(currentLanguage);
-  }, [i18n.language]);
+  useEffect(
+    function setAppLanguage() {
+      let currentLanguage = LocalStorage.get('language');
+      if (!currentLanguage) {
+        LocalStorage.set('language', i18n.language);
+        currentLanguage = i18n.language;
+      }
+      i18n.changeLanguage(currentLanguage);
+    },
+    [i18n.language],
+  );
 
   return (
     <>
@@ -58,16 +61,12 @@ function WeatherApp() {
       {showOfflineNotification && <NetworkOfflineNotification />}
       <ThemeProvider theme={Themes[theme[0]]}>
         <Layout>
-          <Settings
-            currentLanguage={i18n.language}
-            networkStatus={isOnline}
-            theme={theme}
-          />
-          <Header />
           <NetworkStatusContext.Provider value={isOnline}>
             <NetworkNotificationContext.Provider
               value={setShowOfflineNotification}
             >
+              <Settings currentLanguage={i18n.language} theme={theme} />
+              <Header />
               <Content />
             </NetworkNotificationContext.Provider>
           </NetworkStatusContext.Provider>

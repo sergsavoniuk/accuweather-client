@@ -1,7 +1,9 @@
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import i18n from '../../i18n';
 
+import NetworkNotificationContext from 'components/Contexts/NetworkNotificationContext';
+import NetworkStatusContext from 'components/Contexts/NetworkStatusContext';
 import LocalStorage from 'utils/localStorage';
 import {
   Wrapper,
@@ -12,10 +14,19 @@ import { EN, RU } from 'constants/languages';
 import { FORECAST_TABS as FILTERS } from 'constants/forecastTabs';
 
 function LanguageChanger({ currentLanguage }) {
+  const setShowOfflineNotification = useContext(NetworkNotificationContext);
+  const isOnline = useContext(NetworkStatusContext);
+
   function handleLanguageChange(event) {
     const language = event.target.name;
     LocalStorage.set('language', language);
-    LocalStorage.remove(Object.values(FILTERS));
+
+    if (isOnline) {
+      LocalStorage.remove(Object.values(FILTERS));
+    } else {
+      setShowOfflineNotification(true);
+    }
+
     i18n.changeLanguage(language);
   }
 
