@@ -1,6 +1,6 @@
 {
   "name": "accuweather-client",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -26,8 +26,6 @@
     "start": "cross-env NODE_PATH=src/ react-scripts start",
     "build": "cross-env NODE_PATH=src/ react-scripts build && sw-precache --config=src/sw-precache-config.js",
     "build:run": "yarn build && node ./src/server.js",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
     "format": "prettier \"src/**/*.{js,jsx}\" --write",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
