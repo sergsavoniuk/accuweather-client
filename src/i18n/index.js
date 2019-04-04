@@ -3,7 +3,7 @@ import Backend from 'i18next-xhr-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 
-import { EN } from 'constants/languages';
+import { EN, RU } from 'constants/languages';
 
 i18n
   .use(Backend)
@@ -12,6 +12,7 @@ i18n
   .init({
     fallbackLng: false,
     lng: EN,
+    preload: [EN, RU],
     load: 'languageOnly',
     keySeparator: false,
     // debug: true,
