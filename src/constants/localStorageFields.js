@@ -7,4 +7,5 @@ export const LocalStorageFields = {
   language: 'language',
   localizedCity: 'localizedCity',
   offlineLanguage: 'offlineLanguage',
+  theme: 'theme',
 };

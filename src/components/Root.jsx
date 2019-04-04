@@ -32,7 +32,7 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 function WeatherApp() {
-  const theme = useState(DARK);
+  const theme = useState(LocalStorage.get(Fields.theme) || DARK);
 
   const isOnline = useNetworkStatus();
 
@@ -62,6 +62,13 @@ function WeatherApp() {
       i18n.changeLanguage(currentLanguage);
     },
     [i18n.language],
+  );
+
+  useEffect(
+    function setAppTheme() {
+      LocalStorage.set(Fields.theme, theme[0]);
+    },
+    [theme],
   );
 
   return (
