@@ -11,7 +11,7 @@ import {
   BritishLanguageButton,
 } from './LanguageChanger.components';
 import { EN, RU } from 'constants/languages';
-import { FORECAST_TABS as FILTERS } from 'constants/forecastTabs';
+import { LocalStorageFields as Fields } from 'constants/localStorageFields';
 
 function LanguageChanger({ currentLanguage }) {
   const setShowOfflineNotification = useContext(NetworkNotificationContext);
@@ -19,13 +19,16 @@ function LanguageChanger({ currentLanguage }) {
 
   function handleLanguageChange(event) {
     const language = event.target.name;
-    LocalStorage.set('language', language);
 
     if (isOnline) {
-      LocalStorage.remove(Object.values(FILTERS));
+      LocalStorage.set(Fields.language, language);
+      LocalStorage.remove(Fields.localizedCity);
+      LocalStorage.remove([Fields.current, Fields.for5Days, Fields.hourly]);
     } else {
       setShowOfflineNotification(true);
     }
+
+    LocalStorage.set(Fields.offlineLanguage, language);
 
     i18n.changeLanguage(language);
   }

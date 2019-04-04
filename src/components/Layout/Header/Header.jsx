@@ -1,7 +1,7 @@
 import React, { useState, memo } from 'react';
 import { format } from 'date-fns';
+import { useTranslation } from 'react-i18next';
 
-import LocalStorage from 'utils/localStorage';
 import useInterval from 'hooks/useInterval';
 import {
   Header as StyledHeader,
@@ -17,7 +17,9 @@ const DATE_PATTERN = 'DD MMMM';
 export function DateTime() {
   const [date, setDate] = useState(new Date());
 
-  const language = LocalStorage.get('language');
+  // eslint-disable-next-line no-unused-vars
+  const [t, i18n] = useTranslation();
+  const language = i18n.language;
   const locale = getDateLocale(language);
 
   useInterval(() => {

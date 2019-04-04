@@ -1,5 +1,6 @@
 import React, { Suspense, useRef, useState, useContext, lazy } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import ContentContext from 'components/Contexts/ContentContext';
 import Loader from 'components/Loader';
@@ -8,6 +9,7 @@ import LocalStorage from 'utils/localStorage';
 import useFetchForecast from 'hooks/useFetchForecast';
 import { FORECAST_TABS as Tabs } from 'constants/forecastTabs';
 import { FORECAST_ENDPOINTS } from 'constants/endpoints';
+import { LocalStorageFields as Fields } from 'constants/localStorageFields';
 import { transformResponseData, clearResponse } from './utils';
 
 const { Current, Hourly, For5Days } = Tabs;
@@ -29,12 +31,14 @@ export default function ForecastTabPanels({ activeTab }) {
   const [isFreshDataRequested, setFreshDataRequested] = useState(false);
 
   const cityId = useContext(ContentContext);
+  // eslint-disable-next-line no-unused-vars
+  const [t, i18n] = useTranslation();
 
   const response = useFetchForecast({
     url: FORECAST_ENDPOINTS[activeTab],
     options: {
       cityId,
-      language: LocalStorage.get('language'),
+      language: LocalStorage.get(Fields.language),
       filter: activeTab,
       details: activeTab === Hourly ? false : true,
       isFreshDataRequested,
@@ -54,7 +58,7 @@ export default function ForecastTabPanels({ activeTab }) {
   const { data, loading, error } = response;
 
   if (error) {
-    throw new Error(error);
+    throw error;
   }
 
   const Page = PAGES[activeTab];

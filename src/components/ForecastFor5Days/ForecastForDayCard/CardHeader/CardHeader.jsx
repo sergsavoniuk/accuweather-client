@@ -5,11 +5,12 @@ import { format } from 'date-fns';
 import LocalStorage from 'utils/localStorage';
 import { getDateLocale } from 'utils';
 import { StyledCardHeader } from './CardHeader.components';
+import { LocalStorageFields as Fields } from 'constants/localStorageFields';
 
 const DATE_PATTERN = 'dddd, D MMMM';
 
 function CardHeader({ datetime }) {
-  const language = LocalStorage.get('language');
+  const language = LocalStorage.get(Fields.language);
 
   const [weekday, date] = format(datetime, DATE_PATTERN, {
     locale: getDateLocale(language),

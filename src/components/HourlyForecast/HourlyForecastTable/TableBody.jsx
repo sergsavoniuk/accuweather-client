@@ -5,9 +5,10 @@ import { format } from 'date-fns';
 import TemperatureCell from './TemperatureCell';
 import LocalStorage from 'utils/localStorage';
 import { getDateLocale, getTimePattern } from 'utils';
+import { LocalStorageFields as Fields } from 'constants/localStorageFields';
 
 function TableBody({ data }) {
-  const language = LocalStorage.get('language');
+  const language = LocalStorage.get(Fields.language);
   const locale = getDateLocale(language);
   const pattern = getTimePattern(language);
 

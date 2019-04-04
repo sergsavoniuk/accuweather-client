@@ -26,7 +26,7 @@ function LocalStorage() {
 
     remove(key) {
       const data = deserialize(localStorage.getItem(PREFIX));
-      const keys = [...key];
+      const keys = Array.isArray(key) ? [...key] : [key];
 
       const newData = Object.keys(data).reduce((filteredData, currentKey) => {
         if (!keys.includes(currentKey)) {

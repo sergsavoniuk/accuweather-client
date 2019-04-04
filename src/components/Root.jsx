@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { useTranslation } from 'react-i18next';
+
 import NetworkStatusContext from './Contexts/NetworkStatusContext';
 import NetworkNotificationContext from './Contexts/NetworkNotificationContext';
-
 import Layout from 'components/Layout';
 import Header from 'components/Layout/Header';
 import Content from 'components/Layout/Content';
@@ -11,8 +12,8 @@ import LocalStorage from 'utils/localStorage';
 import Themes, { DARK } from 'constants/themes';
 import useNetworkStatus from 'hooks/useNetworkStatus';
 import useOfflineNotification from 'hooks/useOfflineNotification';
-import { useTranslation } from 'react-i18next';
 import NetworkOfflineNotification from './Notifications/NetworkOfflineNotification';
+import { LocalStorageFields as Fields } from 'constants/localStorageFields';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -45,11 +46,19 @@ function WeatherApp() {
 
   useEffect(
     function setAppLanguage() {
-      let currentLanguage = LocalStorage.get('language');
+      let currentLanguage;
+
+      if (isOnline) {
+        currentLanguage = LocalStorage.get(Fields.language);
+      } else {
+        currentLanguage = LocalStorage.get(Fields.offlineLanguage);
+      }
+
       if (!currentLanguage) {
-        LocalStorage.set('language', i18n.language);
+        LocalStorage.set(Fields.language, i18n.language);
         currentLanguage = i18n.language;
       }
+
       i18n.changeLanguage(currentLanguage);
     },
     [i18n.language],

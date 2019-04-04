@@ -7,7 +7,7 @@ import NetworkStatusContext from 'components/Contexts/NetworkStatusContext';
 import SearchCityAutocomplete from './AutocompleteSearch';
 import LocalStorage from 'utils/localStorage';
 import { Form, Button } from './SearchCity.components';
-import { FORECAST_TABS as FILTERS } from 'constants/forecastTabs';
+import { LocalStorageFields as Fields } from 'constants/localStorageFields';
 
 const initialState = {
   key: null,
@@ -28,11 +28,14 @@ function SearchCityForm({ onSubmit }) {
       setCity(initialState);
 
       // Remove weather forecast for previous city
-      LocalStorage.remove(Object.values(FILTERS));
+      LocalStorage.remove([Fields.current, Fields.for5Days, Fields.hourly]);
+
+      // Remove city localized name
+      LocalStorage.remove(Fields.localizedCity);
 
       // Update local storage, set new city
-      LocalStorage.set('cityId', city.key);
-      LocalStorage.set('city', city.value);
+      LocalStorage.set(Fields.cityId, city.key);
+      LocalStorage.set(Fields.city, city.value);
 
       onSubmit(city.key);
     } else {
