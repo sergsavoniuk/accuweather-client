@@ -1,5 +1,9 @@
 <h3>AccuWeather Client - a simple way to view weather forecast.</h3>
 
+[![Build Status](https://travis-ci.org/sergsavoniuk/accuweather-client.svg?branch=master)](https://travis-ci.org/sergsavoniuk/accuweather-client)
+
+### [🔥 Live Demo](https://accuweather-client.herokuapp.com/)
+
 ![App screenshots](https://github.com/sergsavoniuk/accuweather-client/blob/master/app-screenshots.jpg)
 
 <hr />
@@ -7,6 +11,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Introduction
+
+You can view a live demo over at https://accuweather-client.herokuapp.com/
 
 This is a minimalistic app that allows you to view a weather forecast. It uses [AccuWeather APIs](https://developer.accuweather.com/) that provide different API endpoints, including Locations, Current Conditions, Daily and Hourly Forecasts.
 
