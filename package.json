@@ -24,7 +24,8 @@
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src/ react-scripts start",
-    "build": "cross-env NODE_PATH=src/ react-scripts build && sw-precache --config=src/sw-precache-config.js",
+    "build-sw": "node ./src/sw-build.js",
+    "build": "rimraf -rf build && cross-env NODE_PATH=src/ react-scripts build && npm run build-sw",
     "build:run": "yarn build && node ./src/server.js",
     "format": "prettier \"src/**/*.{js,jsx}\" --write",
     "test": "react-scripts test",
@@ -42,6 +43,7 @@
   "devDependencies": {
     "express": "^4.16.4",
     "prettier": "^1.16.4",
-    "sw-precache": "^5.2.1"
+    "rimraf": "^2.6.3",
+    "workbox-build": "^4.3.1"
   }
 }
