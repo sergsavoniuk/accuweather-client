@@ -29,6 +29,10 @@ const GlobalStyles = createGlobalStyle`
     font-family: IBM Plex Mono, Space Grotesk, Roboto Slab, sans-serif;
     font-size: 16px;
   }
+
+  #root {
+    height: 100vh;
+  }
 `;
 
 function WeatherApp() {
