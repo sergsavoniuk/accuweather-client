@@ -22,10 +22,9 @@ This is a minimalistic app that allows you to view a weather forecast. It uses [
 
 - **React** — 16.8 with Hooks
 - **CSS** — Styled Components
-- **Theming** - Dark and Light
-- **Localization** - 🇬🇧/🇷🇺
-- **Service Worker**
-- **Offline mode**
+- **Theming** — Dark and Light
+- **Localization** — 🇬🇧/🇷🇺
+- **Service Worker** — Workbox
 
 ## Getting started
 
