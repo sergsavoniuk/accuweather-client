@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import React, { useEffect } from 'react';
+import { createGlobalStyle } from 'styled-components';
 import { useTranslation } from 'react-i18next';
 
 import NetworkStatusContext from './Contexts/NetworkStatusContext';
@@ -9,11 +9,11 @@ import Header from 'components/Layout/Header';
 import Content from 'components/Layout/Content';
 import Settings from 'components/Settings';
 import LocalStorage from 'utils/localStorage';
-import Themes, { DARK } from 'constants/themes';
 import useNetworkStatus from 'hooks/useNetworkStatus';
 import useOfflineNotification from 'hooks/useOfflineNotification';
 import NetworkOfflineNotification from './Notifications/NetworkOfflineNotification';
 import { LocalStorageFields as Fields } from 'constants/localStorageFields';
+import { ThemeProvider } from 'components/Contexts/ThemeContext';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -36,8 +36,6 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 function WeatherApp() {
-  const theme = useState(LocalStorage.get(Fields.theme) || DARK);
-
   const isOnline = useNetworkStatus();
 
   const [
@@ -68,24 +66,17 @@ function WeatherApp() {
     [i18n.language],
   );
 
-  useEffect(
-    function setAppTheme() {
-      LocalStorage.set(Fields.theme, theme[0]);
-    },
-    [theme],
-  );
-
   return (
     <>
       <GlobalStyles />
       {showOfflineNotification && <NetworkOfflineNotification />}
-      <ThemeProvider theme={Themes[theme[0]]}>
+      <ThemeProvider>
         <Layout>
           <NetworkStatusContext.Provider value={isOnline}>
             <NetworkNotificationContext.Provider
               value={setShowOfflineNotification}
             >
-              <Settings currentLanguage={i18n.language} theme={theme} />
+              <Settings currentLanguage={i18n.language} />
               <Header />
               <Content />
             </NetworkNotificationContext.Provider>

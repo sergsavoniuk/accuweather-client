@@ -1,22 +1,24 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import Switch from 'react-switch';
 
 import { Wrapper, UncheckedIcon, CheckedIcon } from './ThemeChanger.components';
 import { LIGHT, DARK } from 'constants/themes';
+import { useTheme } from 'components/Contexts/ThemeContext';
 
 const BLACK_COLOR = '#000';
 
-function ThemeChanger({ defaultTheme, onChangeTheme }) {
+function ThemeChanger() {
+  const { theme, toogle } = useTheme();
+
   function handleChange(checked) {
-    onChangeTheme(checked ? DARK : LIGHT);
+    toogle(checked ? DARK : LIGHT);
   }
 
   return (
     <Wrapper>
       <Switch
         aria-label="Change theme"
-        checked={defaultTheme === DARK}
+        checked={theme === DARK}
         onChange={handleChange}
         offColor={BLACK_COLOR}
         onColor={BLACK_COLOR}
@@ -27,11 +29,4 @@ function ThemeChanger({ defaultTheme, onChangeTheme }) {
   );
 }
 
-const { string, func } = PropTypes;
-
-ThemeChanger.propTypes = {
-  defaultTheme: string.isRequired,
-  onChangeTheme: func.isRequired,
-};
-
-export default memo(ThemeChanger);
+export default ThemeChanger;

@@ -7,22 +7,21 @@ import NetworkOfflineMessage from 'components/Notifications/NetworkOfflineMessag
 import ThemeChanger from 'components/ThemeChanger';
 import { Wrapper } from './Settings.components';
 
-function Settings({ currentLanguage, theme: [theme, setTheme] }) {
+function Settings({ currentLanguage }) {
   const isOnline = useContext(NetworkStatusContext);
   return (
     <Wrapper>
       <LanguageChanger currentLanguage={currentLanguage} />
       {!isOnline && <NetworkOfflineMessage />}
-      <ThemeChanger defaultTheme={theme} onChangeTheme={setTheme} />
+      <ThemeChanger />
     </Wrapper>
   );
 }
 
-const { string, array } = PropTypes;
+const { string } = PropTypes;
 
 Settings.propTypes = {
   currentLanguage: string.isRequired,
-  theme: array.isRequired,
 };
 
 export default memo(Settings);
