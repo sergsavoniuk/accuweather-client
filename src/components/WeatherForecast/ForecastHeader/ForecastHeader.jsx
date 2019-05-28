@@ -1,13 +1,13 @@
-import React, { useReducer, useContext, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
 import Loader from 'components/Loader';
-import ContentContext from 'components/Contexts/ContentContext';
 import LocalStorage from 'utils/localStorage';
 import { Heading } from './ForecastHeader.components';
 import { formatUrl } from './utils';
 import { LocalStorageFields as Fields } from 'constants/localStorageFields';
+import { useWeatherHook } from 'components/Contexts/WeatherContext';
 
 const initialState = {
   city: null,
@@ -27,7 +27,7 @@ export default function ForecastHeader() {
     reducer,
     initialState,
   );
-  const cityId = useContext(ContentContext);
+  const { cityId } = useWeatherHook();
   const [t] = useTranslation();
 
   const language = LocalStorage.get(Fields.language);
@@ -70,7 +70,7 @@ export default function ForecastHeader() {
         city: localizedCity,
       });
     }
-  }, [language]);
+  }, [language, cityId]);
 
   if (error) {
     throw error;

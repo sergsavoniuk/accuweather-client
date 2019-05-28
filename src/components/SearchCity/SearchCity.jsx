@@ -1,5 +1,4 @@
-import React, { useState, memo } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import SearchCityAutocomplete from './AutocompleteSearch';
@@ -8,16 +7,18 @@ import { Form, Button } from './SearchCity.components';
 import { LocalStorageFields as Fields } from 'constants/localStorageFields';
 import { useNetworkStatus } from 'components/Contexts/NetworkStatusContext';
 import { useOfflineNotification } from 'components/Contexts/NetworkNotificationContext';
+import { useWeatherHook } from 'components/Contexts/WeatherContext';
 
 const initialState = {
   key: null,
   value: '',
 };
 
-function SearchCityForm({ onSubmit }) {
+function SearchCityForm() {
   const [city, setCity] = useState(initialState);
   const [t] = useTranslation();
 
+  const { updateCityId } = useWeatherHook();
   const { setShowNotification } = useOfflineNotification();
   const { isOnline } = useNetworkStatus();
 
@@ -37,7 +38,7 @@ function SearchCityForm({ onSubmit }) {
       LocalStorage.set(Fields.cityId, city.key);
       LocalStorage.set(Fields.city, city.value);
 
-      onSubmit(city.key);
+      updateCityId(city.key);
     } else {
       setShowNotification(true);
     }
@@ -51,8 +52,4 @@ function SearchCityForm({ onSubmit }) {
   );
 }
 
-SearchCityForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
-
-export default memo(SearchCityForm);
+export default SearchCityForm;

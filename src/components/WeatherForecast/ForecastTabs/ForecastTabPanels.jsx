@@ -1,8 +1,7 @@
-import React, { Suspense, useRef, useState, useContext, lazy } from 'react';
+import React, { Suspense, useRef, useState, lazy } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-import ContentContext from 'components/Contexts/ContentContext';
 import Loader from 'components/Loader';
 import RefreshButton from './RefreshButton';
 import LocalStorage from 'utils/localStorage';
@@ -11,6 +10,7 @@ import { FORECAST_TABS as Tabs } from 'constants/forecastTabs';
 import { FORECAST_ENDPOINTS } from 'constants/endpoints';
 import { LocalStorageFields as Fields } from 'constants/localStorageFields';
 import { transformResponseData, clearResponse } from './utils';
+import { useWeatherHook } from 'components/Contexts/WeatherContext';
 
 const { Current, Hourly, For5Days } = Tabs;
 
@@ -30,7 +30,7 @@ export default function ForecastTabPanels({ activeTab }) {
   const prevActiveTab = useRef(activeTab);
   const [isFreshDataRequested, setFreshDataRequested] = useState(false);
 
-  const cityId = useContext(ContentContext);
+  const { cityId } = useWeatherHook();
   // eslint-disable-next-line no-unused-vars
   const [t, i18n] = useTranslation();
 
