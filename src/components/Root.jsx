@@ -1,18 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { useTranslation } from 'react-i18next';
 
-import NetworkStatusContext from './Contexts/NetworkStatusContext';
-import NetworkNotificationContext from './Contexts/NetworkNotificationContext';
-import Layout from 'components/Layout';
-import Header from 'components/Layout/Header';
-import Content from 'components/Layout/Content';
+import { NetworkStatusProvider } from './Contexts/NetworkStatusContext';
+import { NetworkNotificationProvider } from './Contexts/NetworkNotificationContext';
+import Layout, { Header, Content } from 'components/Layout';
 import Settings from 'components/Settings';
-import LocalStorage from 'utils/localStorage';
-import useNetworkStatus from 'hooks/useNetworkStatus';
-import useOfflineNotification from 'hooks/useOfflineNotification';
 import NetworkOfflineNotification from './Notifications/NetworkOfflineNotification';
-import { LocalStorageFields as Fields } from 'constants/localStorageFields';
 import { ThemeProvider } from 'components/Contexts/ThemeContext';
 
 const GlobalStyles = createGlobalStyle`
@@ -36,51 +29,19 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 function WeatherApp() {
-  const isOnline = useNetworkStatus();
-
-  const [
-    showOfflineNotification,
-    setShowOfflineNotification,
-  ] = useOfflineNotification();
-
-  // eslint-disable-next-line no-unused-vars
-  const [t, i18n] = useTranslation();
-
-  useEffect(
-    function setAppLanguage() {
-      let currentLanguage;
-
-      if (isOnline) {
-        currentLanguage = LocalStorage.get(Fields.language);
-      } else {
-        currentLanguage = LocalStorage.get(Fields.offlineLanguage);
-      }
-
-      if (!currentLanguage) {
-        LocalStorage.set(Fields.language, i18n.language);
-        currentLanguage = i18n.language;
-      }
-
-      i18n.changeLanguage(currentLanguage);
-    },
-    [i18n.language],
-  );
-
   return (
     <>
       <GlobalStyles />
-      {showOfflineNotification && <NetworkOfflineNotification />}
       <ThemeProvider>
         <Layout>
-          <NetworkStatusContext.Provider value={isOnline}>
-            <NetworkNotificationContext.Provider
-              value={setShowOfflineNotification}
-            >
-              <Settings currentLanguage={i18n.language} />
+          <NetworkStatusProvider>
+            <NetworkNotificationProvider>
+              <NetworkOfflineNotification />
+              <Settings />
               <Header />
               <Content />
-            </NetworkNotificationContext.Provider>
-          </NetworkStatusContext.Provider>
+            </NetworkNotificationProvider>
+          </NetworkStatusProvider>
         </Layout>
       </ThemeProvider>
     </>

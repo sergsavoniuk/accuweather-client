@@ -1,27 +1,47 @@
-import React, { memo, useContext } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import NetworkStatusContext from 'components/Contexts/NetworkStatusContext';
 import LanguageChanger from 'components/LanguageChanger';
 import NetworkOfflineMessage from 'components/Notifications/NetworkOfflineMessage';
 import ThemeChanger from 'components/ThemeChanger';
+import LocalStorage from 'utils/localStorage';
 import { Wrapper } from './Settings.components';
+import { useNetworkStatus } from 'components/Contexts/NetworkStatusContext';
+import { LocalStorageFields as Fields } from 'constants/localStorageFields';
 
 function Settings({ currentLanguage }) {
-  const isOnline = useContext(NetworkStatusContext);
+  const { isOnline } = useNetworkStatus();
+
+  // eslint-disable-next-line no-unused-vars
+  const [t, i18n] = useTranslation();
+
+  useEffect(
+    function setAppLanguage() {
+      let currentLanguage;
+
+      if (isOnline) {
+        currentLanguage = LocalStorage.get(Fields.language);
+      } else {
+        currentLanguage = LocalStorage.get(Fields.offlineLanguage);
+      }
+
+      if (!currentLanguage) {
+        LocalStorage.set(Fields.language, i18n.language);
+        currentLanguage = i18n.language;
+      }
+
+      i18n.changeLanguage(currentLanguage);
+    },
+    [i18n.language],
+  );
+
   return (
     <Wrapper>
-      <LanguageChanger currentLanguage={currentLanguage} />
+      <LanguageChanger currentLanguage={i18n.language} />
       {!isOnline && <NetworkOfflineMessage />}
       <ThemeChanger />
     </Wrapper>
   );
 }
 
-const { string } = PropTypes;
-
-Settings.propTypes = {
-  currentLanguage: string.isRequired,
-};
-
-export default memo(Settings);
+export default Settings;

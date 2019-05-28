@@ -1,18 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-import NetworkNotificationContext from 'components/Contexts/NetworkNotificationContext';
-import NetworkStatusContext from 'components/Contexts/NetworkStatusContext';
 import LocalStorage from 'utils/localStorage';
 import { FORECAST_TABS as Tabs } from 'constants/forecastTabs';
 import { Wrapper, ForecastTabListItem } from './ForecastTabs.components';
+import { useNetworkStatus } from 'components/Contexts/NetworkStatusContext';
+import { useOfflineNotification } from 'components/Contexts/NetworkNotificationContext';
 
 export default function ForecastTabList({ activeTab, onSelectTab }) {
   const [t] = useTranslation();
 
-  const setShowOfflineNotification = useContext(NetworkNotificationContext);
-  const isOnline = useContext(NetworkStatusContext);
+  const { setShowNotification } = useOfflineNotification();
+  const { isOnline } = useNetworkStatus();
 
   function handleSelectTab(event) {
     const tabName = event.target.name;
@@ -20,7 +20,7 @@ export default function ForecastTabList({ activeTab, onSelectTab }) {
     if (isOnline || LocalStorage.get(tabName) !== undefined) {
       onSelectTab(tabName);
     } else {
-      setShowOfflineNotification(true);
+      setShowNotification(true);
     }
   }
 

@@ -18,6 +18,13 @@ function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(LocalStorage.get(Fields.theme) || DARK);
   const value = useMemo(() => ({ theme, setTheme }), [theme]);
 
+  useEffect(
+    function updateTheme() {
+      LocalStorage.set(Fields.theme, theme);
+    },
+    [theme],
+  );
+
   return (
     <ThemeContext.Provider value={value}>
       <StyledCompoThemeProvider theme={Themes[theme]}>
@@ -35,14 +42,7 @@ function useTheme() {
   }
 
   const { theme, setTheme } = context;
-  const toogle = useCallback(theme => setTheme(theme), [theme]);
-
-  useEffect(
-    function updateTheme() {
-      LocalStorage.set(Fields.theme, theme);
-    },
-    [theme],
-  );
+  const toogle = useCallback(theme => setTheme(theme), [setTheme]);
 
   return {
     theme,

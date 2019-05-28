@@ -1,9 +1,7 @@
-import React, { memo, useContext } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import i18n from '../../i18n';
 
-import NetworkNotificationContext from 'components/Contexts/NetworkNotificationContext';
-import NetworkStatusContext from 'components/Contexts/NetworkStatusContext';
 import LocalStorage from 'utils/localStorage';
 import {
   Wrapper,
@@ -12,10 +10,12 @@ import {
 } from './LanguageChanger.components';
 import { EN, RU } from 'constants/languages';
 import { LocalStorageFields as Fields } from 'constants/localStorageFields';
+import { useNetworkStatus } from 'components/Contexts/NetworkStatusContext';
+import { useOfflineNotification } from 'components/Contexts/NetworkNotificationContext';
 
 function LanguageChanger({ currentLanguage }) {
-  const setShowOfflineNotification = useContext(NetworkNotificationContext);
-  const isOnline = useContext(NetworkStatusContext);
+  const { setShowNotification } = useOfflineNotification();
+  const { isOnline } = useNetworkStatus();
 
   function handleLanguageChange(event) {
     const language = event.target.name;
@@ -25,7 +25,7 @@ function LanguageChanger({ currentLanguage }) {
       LocalStorage.remove(Fields.localizedCity);
       LocalStorage.remove([Fields.current, Fields.for5Days, Fields.hourly]);
     } else {
-      setShowOfflineNotification(true);
+      setShowNotification(true);
     }
 
     LocalStorage.set(Fields.offlineLanguage, language);

@@ -1,9 +1,9 @@
-import { useEffect, useReducer, useRef, useContext } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import axios from 'axios';
 
-import NetworkNotificationContext from 'components/Contexts/NetworkNotificationContext';
-import NetworkStatusContext from 'components/Contexts/NetworkStatusContext';
 import LocalStorage from 'utils/localStorage';
+import { useNetworkStatus } from 'components/Contexts/NetworkStatusContext';
+import { useOfflineNotification } from 'components/Contexts/NetworkNotificationContext';
 
 const initialState = {
   data: null,
@@ -16,8 +16,8 @@ const reducer = (state, newState) => {
 };
 
 export default function useFetchForecast({ url, options, cb }) {
-  const setShowOfflineNotification = useContext(NetworkNotificationContext);
-  const isOnline = useContext(NetworkStatusContext);
+  const { setShowNotification } = useOfflineNotification();
+  const { isOnline } = useNetworkStatus();
 
   const [state, setState] = useReducer(reducer, initialState);
   const cancelTokenSource = useRef(null);
@@ -67,7 +67,7 @@ export default function useFetchForecast({ url, options, cb }) {
       if (isOnline) {
         fetchData();
       } else {
-        setShowOfflineNotification(true);
+        setShowNotification(true);
       }
     }
     return () => {

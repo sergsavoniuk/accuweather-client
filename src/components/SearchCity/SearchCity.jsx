@@ -1,13 +1,13 @@
-import React, { useState, memo, useContext } from 'react';
+import React, { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-import NetworkNotificationContext from 'components/Contexts/NetworkNotificationContext';
-import NetworkStatusContext from 'components/Contexts/NetworkStatusContext';
 import SearchCityAutocomplete from './AutocompleteSearch';
 import LocalStorage from 'utils/localStorage';
 import { Form, Button } from './SearchCity.components';
 import { LocalStorageFields as Fields } from 'constants/localStorageFields';
+import { useNetworkStatus } from 'components/Contexts/NetworkStatusContext';
+import { useOfflineNotification } from 'components/Contexts/NetworkNotificationContext';
 
 const initialState = {
   key: null,
@@ -18,8 +18,8 @@ function SearchCityForm({ onSubmit }) {
   const [city, setCity] = useState(initialState);
   const [t] = useTranslation();
 
-  const setShowOfflineNotification = useContext(NetworkNotificationContext);
-  const isOnline = useContext(NetworkStatusContext);
+  const { setShowNotification } = useOfflineNotification();
+  const { isOnline } = useNetworkStatus();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -39,7 +39,7 @@ function SearchCityForm({ onSubmit }) {
 
       onSubmit(city.key);
     } else {
-      setShowOfflineNotification(true);
+      setShowNotification(true);
     }
   }
 
