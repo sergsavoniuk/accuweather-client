@@ -1,0 +1,50 @@
+import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import LanguageChanger from 'components/LanguageChanger';
+import NetworkOfflineMessage from 'components/Notifications/NetworkOfflineMessage';
+import ThemeChanger from 'components/ThemeChanger';
+import { localStorageInstance as LocalStorage } from 'utils/localStorage';
+import { Wrapper } from './Settings.components';
+import { useNetworkStatus } from 'components/Contexts/NetworkStatusContext';
+import { LocalStorageFields as Fields } from 'constants/localStorageFields';
+
+interface Props {
+  currentLanguage: string;
+}
+
+function Settings({ currentLanguage }: Props) {
+  const { isOnline } = useNetworkStatus();
+
+  const [, i18n] = useTranslation();
+
+  useEffect(
+    function setAppLanguage() {
+      let currentLanguage;
+
+      if (isOnline) {
+        currentLanguage = LocalStorage.get(Fields.language);
+      } else {
+        currentLanguage = LocalStorage.get(Fields.offlineLanguage);
+      }
+
+      if (!currentLanguage) {
+        LocalStorage.set(Fields.language, i18n.language);
+        currentLanguage = i18n.language;
+      }
+
+      i18n.changeLanguage(currentLanguage);
+    },
+    [i18n.language],
+  );
+
+  return (
+    <Wrapper>
+      <LanguageChanger currentLanguage={i18n.language} />
+      {!isOnline && <NetworkOfflineMessage />}
+      <ThemeChanger />
+    </Wrapper>
+  );
+}
+
+export default Settings;
