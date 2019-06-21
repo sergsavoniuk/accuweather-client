@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-import { localStorageInstance as LocalStorage } from 'utils/localStorage';
-import { FORECAST_TABS as Tabs } from 'constants/forecastTabs';
+import { localStorageInstance as LocalStorage } from '@/utils/localStorage';
+import { FORECAST_TABS as Tabs } from '@/constants/forecastTabs';
 import { Wrapper, ForecastTabListItem } from './ForecastTabs.components';
-import { useNetworkStatus } from 'components/Contexts/NetworkStatusContext';
-import { useOfflineNotification } from 'components/Contexts/NetworkNotificationContext';
+import { useNetworkStatus } from '@/components/Contexts/NetworkStatusContext';
+import { useOfflineNotification } from '@/components/Contexts/NetworkNotificationContext';
 
 interface Props {
   activeTab: string;
@@ -44,10 +43,3 @@ export default function ForecastTabList({ activeTab, onSelectTab }: Props) {
     </Wrapper>
   );
 }
-
-const { string, func } = PropTypes;
-
-ForecastTabList.propTypes = {
-  activeTab: string.isRequired,
-  onSelectTab: func.isRequired,
-};

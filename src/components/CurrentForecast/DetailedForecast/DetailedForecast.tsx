@@ -1,21 +1,16 @@
 import React from 'react';
 import 'styled-components/macro';
+import { useTranslation } from 'react-i18next';
 
 import { Wrapper, Param, Label, Value } from './DetailedForecast.components';
-import { useTranslation } from 'react-i18next';
+import { TransformedCurrentForecast as CurrentForecastProps } from '@/components/WeatherForecast/ForecastTabs/utils';
 
 const BASE_PREFIX: string = 'DetailedForecast.param';
 
-export interface Props {
-  description: string;
-  realFeelTemperature: number;
-  humidity: number;
-  wind: {
-    direction: string;
-    speed: number;
-  };
-  visibility: number;
-}
+type DetailedForecastProps = Pick<
+  CurrentForecastProps,
+  'description' | 'realFeelTemperature' | 'humidity' | 'wind' | 'visibility'
+>;
 
 function DetailedForecast({
   description,
@@ -23,7 +18,7 @@ function DetailedForecast({
   humidity,
   wind,
   visibility,
-}: Props) {
+}: DetailedForecastProps) {
   const [t] = useTranslation();
   return (
     <Wrapper>

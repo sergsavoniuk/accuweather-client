@@ -15,7 +15,7 @@ const NetworkStatusContext = createContext<INetworkStatusContext | null>(null);
 
 const NETWORK_STATUSES = ['online', 'offline'];
 
-function NetworkStatusProvider({ children }: { children: React.ReactNode }) {
+function NetworkStatusProvider({ children }: { children?: React.ReactNode }) {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const value = useMemo(() => ({ isOnline, setIsOnline }), [isOnline]);
 

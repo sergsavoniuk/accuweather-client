@@ -2,12 +2,12 @@ import React, { useReducer, useEffect } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
-import Loader from 'components/Loader';
-import { localStorageInstance as LocalStorage } from 'utils/localStorage';
+import Loader from '@/components/Loader';
+import { localStorageInstance as LocalStorage } from '@/utils/localStorage';
 import { Heading } from './ForecastHeader.components';
 import { formatUrl } from './utils';
-import { LocalStorageFields as Fields } from 'constants/localStorageFields';
-import { useWeatherHook } from 'components/Contexts/WeatherContext';
+import { LocalStorageFields as Fields } from '@/constants/localStorageFields';
+import { useWeatherHook } from '@/components/Contexts/WeatherContext';
 
 interface State {
   city: string | null;

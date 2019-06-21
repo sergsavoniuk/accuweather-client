@@ -2,7 +2,7 @@ import React from 'react';
 import LazyLoad from 'react-lazyload';
 import { useTranslation } from 'react-i18next';
 
-import { formatImageSource } from 'utils';
+import { formatImageSource } from '@/utils';
 import {
   Wrapper,
   TimeOfDay,
@@ -11,18 +11,12 @@ import {
   WeatherDescription,
   RealFeelTemperature,
 } from './ForecastStatistics.components';
+import { DayNightForecast as DayNightForecastProps } from '@/components/WeatherForecast/ForecastTabs/utils';
 
 const BASE_PREFIX = 'ForecastForDay.Statistics';
 
-export interface ForecastProps {
-  temperature: number;
-  realFeelTemperature: number;
-  description: string;
-  icon: number;
-}
-
 interface Props {
-  forecast: ForecastProps;
+  forecast: DayNightForecastProps;
   title: string;
 }
 

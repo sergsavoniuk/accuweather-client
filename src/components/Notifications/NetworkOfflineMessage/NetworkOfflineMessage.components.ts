@@ -10,5 +10,5 @@ export const Message = styled.p`
   background-color: #daa520;
   color: #4c4c4c;
   border: 2px solid
-    ${props => (props.theme.themeName === 'dark' ? '#f0ffff' : '#282c35')};
+    ${({ theme }) => (theme.themeName === 'dark' ? '#f0ffff' : '#282c35')};
 `;

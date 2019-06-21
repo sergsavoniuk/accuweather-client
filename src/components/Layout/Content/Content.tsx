@@ -1,10 +1,10 @@
 import React from 'react';
 
-import SearchCity from 'components/SearchCity';
-import WeatherForecast from 'components/WeatherForecast';
-import ContentErrorBoundary from 'components/ErrorBoundaries';
+import SearchCity from '@/components/SearchCity';
+import WeatherForecast from '@/components/WeatherForecast';
+import ContentErrorBoundary from '@/components/ErrorBoundaries';
 import { Wrapper } from './Content.components';
-import { WeatherProvider } from 'components/Contexts/WeatherContext';
+import { WeatherProvider } from '@/components/Contexts/WeatherContext';
 
 function Content() {
   return (

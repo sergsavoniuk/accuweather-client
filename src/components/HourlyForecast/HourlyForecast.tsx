@@ -1,13 +1,13 @@
 import React from 'react';
 
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  TableBodyProps,
-} from './HourlyForecastTable';
+import { Table, TableHeader, TableBody } from './HourlyForecastTable';
+import { TransformedHourlyForecast } from '@/components/WeatherForecast/ForecastTabs/utils';
 
-function HourlyForecast({ data = [] }: TableBodyProps) {
+export interface HourlyForecastProps {
+  data: TransformedHourlyForecast[];
+}
+
+function HourlyForecast({ data = [] }: HourlyForecastProps) {
   return (
     <Table>
       <TableHeader />

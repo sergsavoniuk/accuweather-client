@@ -1,17 +1,16 @@
 import React, { memo } from 'react';
-import PropTypes from 'prop-types';
 import i18n from '../../i18n';
 
-import { localStorageInstance as LocalStorage } from 'utils/localStorage';
+import { localStorageInstance as LocalStorage } from '@/utils/localStorage';
 import {
   Wrapper,
   RussianLanguageButton,
   BritishLanguageButton,
 } from './LanguageChanger.components';
-import { EN, RU } from 'constants/languages';
-import { LocalStorageFields as Fields } from 'constants/localStorageFields';
-import { useNetworkStatus } from 'components/Contexts/NetworkStatusContext';
-import { useOfflineNotification } from 'components/Contexts/NetworkNotificationContext';
+import { EN, RU } from '@/constants/languages';
+import { LocalStorageFields as Fields } from '@/constants/localStorageFields';
+import { useNetworkStatus } from '@/components/Contexts/NetworkStatusContext';
+import { useOfflineNotification } from '@/components/Contexts/NetworkNotificationContext';
 
 interface Props {
   currentLanguage: string;
@@ -22,7 +21,7 @@ function LanguageChanger({ currentLanguage }: Props) {
   const { isOnline } = useNetworkStatus();
 
   function handleLanguageChange(event: React.MouseEvent) {
-    const language: string = event.target.name;
+    const language: string = (event.target as HTMLButtonElement).name;
 
     if (isOnline) {
       LocalStorage.set(Fields.language, language);
@@ -54,9 +53,5 @@ function LanguageChanger({ currentLanguage }: Props) {
     </Wrapper>
   );
 }
-
-LanguageChanger.propTypes = {
-  currentLanguage: PropTypes.string.isRequired,
-};
 
 export default memo(LanguageChanger);

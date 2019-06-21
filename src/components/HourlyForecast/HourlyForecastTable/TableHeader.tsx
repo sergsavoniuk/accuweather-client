@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-const HEADERS: string[] = ['time', 'temperature', 'precipation'];
+const HEADERS = ['time', 'temperature', 'precipation'];
 
 function TableHeader() {
   const [t] = useTranslation();

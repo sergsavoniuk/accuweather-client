@@ -1,10 +1,10 @@
 import React, { memo, useCallback } from 'react';
 
 import { RefreshButton as StyledRefreshButton } from './ForecastTabs.components';
-import { LIGHT, DARK } from 'constants/themes';
-import { useTheme } from 'components/Contexts/ThemeContext';
-import { useNetworkStatus } from 'components/Contexts/NetworkStatusContext';
-import { useOfflineNotification } from 'components/Contexts/NetworkNotificationContext';
+import { LIGHT, DARK } from '@/constants/themes';
+import { useTheme } from '@/components/Contexts/ThemeContext';
+import { useNetworkStatus } from '@/components/Contexts/NetworkStatusContext';
+import { useOfflineNotification } from '@/components/Contexts/NetworkNotificationContext';
 
 interface RefreshButton {
   disabled: boolean;

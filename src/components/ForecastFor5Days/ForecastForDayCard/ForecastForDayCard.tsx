@@ -1,27 +1,24 @@
 import React from 'react';
 
 import CardHeader from './CardHeader';
-import ForecastStatistics, { ForecastProps } from './ForecastStatistics';
+import ForecastStatistics from './ForecastStatistics';
 import {
   CardContainer,
   Wrapper,
   Separator,
 } from './ForecastForDayCard.components';
-
-export interface ForecastMetaProps {
-  date: string;
-  day: ForecastProps;
-  night: ForecastProps;
-}
+import { TransformedFor5DaysForecast } from '@/components/WeatherForecast/ForecastTabs/utils';
 
 interface Props {
-  forecast: ForecastMetaProps;
+  forecast: TransformedFor5DaysForecast;
 }
 
-function ForecastForDayCard({ forecast: { date, day, night } }: Props) {
+function ForecastForDayCard({
+  forecast: { date: datetime, day, night },
+}: Props) {
   return (
     <CardContainer>
-      <CardHeader datetime={date} />
+      <CardHeader date={datetime} />
       <Wrapper>
         <ForecastStatistics forecast={day} title="day" />
         <Separator />

@@ -1,26 +1,27 @@
 import React, { Suspense, useRef, useState, lazy } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import Loader from 'components/Loader';
+import Loader from '@/components/Loader';
 import RefreshButton from './RefreshButton';
-import { localStorageInstance as LocalStorage } from 'utils/localStorage';
-import useFetchForecast from 'hooks/useFetchForecast';
-import { FORECAST_TABS as Tabs } from 'constants/forecastTabs';
-import { FORECAST_ENDPOINTS } from 'constants/endpoints';
-import { LocalStorageFields as Fields } from 'constants/localStorageFields';
+import useFetchForecast from '@/hooks/useFetchForecast';
+import { localStorageInstance as LocalStorage } from '@/utils/localStorage';
+import { FORECAST_TABS as Tabs } from '@/constants/forecastTabs';
+import { FORECAST_ENDPOINTS } from '@/constants/endpoints';
+import { LocalStorageFields as Fields } from '@/constants/localStorageFields';
 import { transformResponseData, clearResponse } from './utils';
-import { useWeatherHook } from 'components/Contexts/WeatherContext';
+import { useWeatherHook } from '@/components/Contexts/WeatherContext';
 
 const { Current, Hourly, For5Days } = Tabs;
 
 const PAGES = {
   [Current]: lazy(() =>
-    import(/* webpackChunkName: "CurrentForecast" */ 'components/CurrentForecast'),
+    import(/* webpackChunkName: "CurrentForecast" */ '@/components/CurrentForecast'),
   ),
   [Hourly]: lazy(() =>
-    import(/* webpackChunkName: "HourlyForecast" */ 'components/HourlyForecast'),
+    import(/* webpackChunkName: "HourlyForecast" */ '@/components/HourlyForecast'),
   ),
   [For5Days]: lazy(() =>
-    import(/* webpackChunkName: "ForecastFor5Days" */ 'components/ForecastFor5Days'),
+    import(/* webpackChunkName: "ForecastFor5Days" */ '@/components/ForecastFor5Days'),
   ),
 };
 
@@ -33,6 +34,8 @@ export default function ForecastTabPanels({ activeTab }: Props) {
   const [isFreshDataRequested, setFreshDataRequested] = useState(false);
 
   const { cityId } = useWeatherHook();
+
+  useTranslation();
 
   const response = useFetchForecast({
     url: FORECAST_ENDPOINTS[activeTab],

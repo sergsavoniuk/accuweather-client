@@ -1,7 +1,7 @@
 import React from 'react';
 import LazyLoad from 'react-lazyload';
 
-import { formatImageSource } from 'utils';
+import { formatImageSource } from '@/utils';
 import {
   WeatherDescription,
   Temperature,
@@ -9,12 +9,9 @@ import {
   Wrapper,
   InnerWrapper,
 } from './HourlyForecastTable.components';
+import { TransformedHourlyForecast as HourlyForecastProps } from '@/components/WeatherForecast/ForecastTabs/utils';
 
-export interface Props {
-  icon: number;
-  temperature: number;
-  description: string;
-}
+type Props = Pick<HourlyForecastProps, 'icon' | 'temperature' | 'description'>;
 
 function TemperatureCell({ icon, temperature, description }: Props) {
   return (

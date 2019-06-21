@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Loader from 'components/Loader';
-import useAutocomplete from 'hooks/useAutocomplete';
+import Loader from '@/components/Loader';
+import useAutocomplete from '@/hooks/useAutocomplete';
 import {
   Wrapper,
   Input,
@@ -48,12 +48,16 @@ export function DropdownList({
   );
 }
 
-interface AutocompleteSearchProps {
+export interface HandleInputChangeCallback {
+  ({ key, value }: { key: string | null; value: string }): void;
+}
+
+export interface AutocompleteSearchProps {
   city: {
-    key: string;
+    key: string | null;
     value: string;
   };
-  onChange: (key: string) => void;
+  onChange: HandleInputChangeCallback;
 }
 
 export default function AutocompleteSearch({

@@ -1,27 +1,32 @@
 import { useEffect, useReducer, useRef } from 'react';
 import axios, { CancelTokenSource } from 'axios';
 
-import { localStorageInstance as LocalStorage } from 'utils/localStorage';
-import { useNetworkStatus } from 'components/Contexts/NetworkStatusContext';
-import { useOfflineNotification } from 'components/Contexts/NetworkNotificationContext';
+import { localStorageInstance as LocalStorage } from '@/utils/localStorage';
+import { useNetworkStatus } from '@/components/Contexts/NetworkStatusContext';
+import { useOfflineNotification } from '@/components/Contexts/NetworkNotificationContext';
+import { Forecast } from '@/components/WeatherForecast/ForecastTabs/utils';
 
-interface State {
-  data: null;
+export interface ForecastState {
+  data: Forecast | null;
   loading: boolean;
   error: Error | null;
 }
 
-const initialState: State = {
+const initialState: ForecastState = {
   data: null,
   loading: false,
   error: null,
 };
 
-const reducer = (state: State, newState: Partial<State>) => {
+const reducer = (state: ForecastState, newState: Partial<ForecastState>) => {
   return { ...state, ...newState };
 };
 
-export default function useFetchForecast({ url, options, cb }) {
+export default function useFetchForecast({
+  url,
+  options,
+  cb,
+}: any): ForecastState {
   const { setShowNotification } = useOfflineNotification();
   const { isOnline } = useNetworkStatus();
 

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const Form = styled.form<{
-  onSubmit: (event: React.MouseEvent) => void;
-}>`
+export const Form = styled.form`
   width: 40%;
   display: flex;
   justify-content: center;

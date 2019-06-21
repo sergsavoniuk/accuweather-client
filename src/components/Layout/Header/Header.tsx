@@ -2,7 +2,7 @@ import React, { useState, memo } from 'react';
 import { format } from 'date-fns';
 import { useTranslation } from 'react-i18next';
 
-import useInterval from 'hooks/useInterval';
+import useInterval from '@/hooks/useInterval';
 import {
   Header as StyledHeader,
   Brand as StyledBrand,
@@ -10,9 +10,9 @@ import {
   BrandName,
   Wrapper,
 } from './Header.components';
-import { getDateLocale, getTimePattern } from 'utils';
+import { getDateLocale, getTimePattern } from '@/utils';
 
-const DATE_PATTERN: string = 'DD MMMM';
+const DATE_PATTERN = 'DD MMMM';
 
 export function DateTime() {
   const [date, setDate] = useState(new Date());

@@ -1,18 +1,22 @@
+import React from 'react';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   margin-bottom: 20px;
 `;
 
-export const ForecastTabListItem = styled.button`
+interface ForecastTabListItemProps {
+  active: boolean;
+  children: React.ReactNode;
+}
+
+export const ForecastTabListItem = styled.button<ForecastTabListItemProps>`
   padding: 30px;
   padding-bottom: 10px;
   background-color: transparent;
   border: none;
-  border-bottom: ${props =>
-    props.active
-      ? `1px solid ${props.theme.button.borderBottomColor}`
-      : 'none'};
+  border-bottom: ${({ active, theme }) =>
+    active ? `1px solid ${theme.button.borderBottomColor}` : 'none'};
   font-family: IBM Plex Mono, Space Grotesk, Roboto Slab, sans-serif;
   color: ${({ theme }) => theme.primaryColor};
   transition: color 200ms ease-out;
@@ -37,5 +41,5 @@ export const RefreshButton = styled.button`
   outline: none;
   cursor: pointer;
 
-  ${props => props.disabled && 'cursor: not-allowed'}
+  ${({ disabled }) => disabled && 'cursor: not-allowed'}
 `;

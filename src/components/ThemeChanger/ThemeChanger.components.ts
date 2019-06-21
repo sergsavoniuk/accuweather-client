@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  /* position: absolute;
-  top: 10px;
-  right: 10px; */
-`;
+export const Wrapper = styled.div``;
 
 export const UncheckedIcon = styled.img.attrs({
   src: `${process.env.PUBLIC_URL}/images/moon.png`,

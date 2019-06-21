@@ -1,16 +1,15 @@
 import React from 'react';
 
-import DetailedForecast, { DetailedForecastProps } from './DetailedForecast';
-import ShortForecast, { ShortForecastProps } from './ShortForecast';
+import DetailedForecast from './DetailedForecast';
+import ShortForecast from './ShortForecast';
 import { Wrapper } from './CurrentForecast.components';
-
-type ForecastData = DetailedForecastProps & ShortForecastProps;
+import { TransformedCurrentForecast } from '@/components/WeatherForecast/ForecastTabs/utils';
 
 interface Props {
-  data: ForecastData;
+  data: TransformedCurrentForecast;
 }
 
-function CurrentForecast({ data = {} as ForecastData }: Props) {
+function CurrentForecast({ data = {} as TransformedCurrentForecast }: Props) {
   const {
     icon,
     temperature,

@@ -1,12 +1,12 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 
+import Layout, { Header, Content } from '@/components/Layout';
+import Settings from '@/components/Settings';
+import NetworkOfflineNotification from './Notifications/NetworkOfflineNotification';
 import { NetworkStatusProvider } from './Contexts/NetworkStatusContext';
 import { NetworkNotificationProvider } from './Contexts/NetworkNotificationContext';
-import Layout, { Header, Content } from 'components/Layout';
-import Settings from 'components/Settings';
-import NetworkOfflineNotification from './Notifications/NetworkOfflineNotification';
-import { ThemeProvider } from 'components/Contexts/ThemeContext';
+import { ThemeProvider } from '@/components/Contexts/ThemeContext';
 
 const GlobalStyles = createGlobalStyle`
   * {

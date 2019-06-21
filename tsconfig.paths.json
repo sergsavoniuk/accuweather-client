@@ -1,11 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "components/*": ["components/*"],
-      "utils/*": ["src/utils/*"],
-      "hooks/*": ["src/hooks/*"],
-      "constants/*": ["src/constants/*"]
+      "@/*": ["src/*"]
     }
   }
 }

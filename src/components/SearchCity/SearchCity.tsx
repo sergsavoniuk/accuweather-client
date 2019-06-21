@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import SearchCityAutocomplete from './AutocompleteSearch';
-import { localStorageInstance as LocalStorage } from 'utils/localStorage';
+import { localStorageInstance as LocalStorage } from '@/utils/localStorage';
 import { Form, Button } from './SearchCity.components';
-import { LocalStorageFields as Fields } from 'constants/localStorageFields';
-import { useNetworkStatus } from 'components/Contexts/NetworkStatusContext';
-import { useOfflineNotification } from 'components/Contexts/NetworkNotificationContext';
-import { useWeatherHook } from 'components/Contexts/WeatherContext';
+import { LocalStorageFields as Fields } from '@/constants/localStorageFields';
+import { useNetworkStatus } from '@/components/Contexts/NetworkStatusContext';
+import { useOfflineNotification } from '@/components/Contexts/NetworkNotificationContext';
+import { useWeatherHook } from '@/components/Contexts/WeatherContext';
 
 interface State {
   key: string | null;
@@ -27,7 +27,7 @@ function SearchCityForm() {
   const { setShowNotification } = useOfflineNotification();
   const { isOnline } = useNetworkStatus();
 
-  function handleSubmit(event: React.MouseEvent) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (isOnline) {

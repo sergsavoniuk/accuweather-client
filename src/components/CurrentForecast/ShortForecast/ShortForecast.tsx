@@ -1,20 +1,18 @@
 import React from 'react';
 import LazyLoad from 'react-lazyload';
 
-import { formatImageSource } from 'utils';
+import { formatImageSource } from '@/utils';
 import {
   Wrapper,
   Separator,
   Temperature,
   WeatherIcon,
 } from './ShortForecast.components';
+import { TransformedCurrentForecast as CurrentForecastProps } from '@/components/WeatherForecast/ForecastTabs/utils';
 
-export interface Props {
-  icon: number;
-  temperature: number;
-}
+type ShortForecastProps = Pick<CurrentForecastProps, 'icon' | 'temperature'>;
 
-function ShortForecast({ icon, temperature }: Props) {
+function ShortForecast({ icon, temperature }: ShortForecastProps) {
   return (
     <Wrapper>
       <LazyLoad height={45} once>

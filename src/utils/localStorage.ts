@@ -3,7 +3,7 @@ interface SerializableObject {
 }
 
 function LocalStorage() {
-  const PREFIX: string = 'accuweather_data';
+  const PREFIX = 'accuweather_data';
 
   function serialize(data: SerializableObject = {}): string {
     return JSON.stringify(data);

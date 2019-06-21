@@ -6,7 +6,11 @@ interface State {
   hasError: boolean | null;
 }
 
-export default class ContentErrorBoundary extends Component<{}, State> {
+interface Props {
+  children?: React.ReactNode | null;
+}
+
+export default class ContentErrorBoundary extends Component<Props, State> {
   state = {
     hasError: null,
   };

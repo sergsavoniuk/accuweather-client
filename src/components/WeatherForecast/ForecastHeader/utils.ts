@@ -1,4 +1,4 @@
-import { SEARCH_BY_LOCATION_KEY_ENDPOINT } from 'constants/endpoints';
+import { SEARCH_BY_LOCATION_KEY_ENDPOINT } from '@/constants/endpoints';
 
 interface Props {
   cityId: string | null;

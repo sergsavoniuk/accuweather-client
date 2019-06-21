@@ -19,7 +19,7 @@ const NetworkNotificationContext = createContext<INetworkNotificationContext | n
 function NetworkNotificationProvider({
   children,
 }: {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) {
   const [showNotification, setShowNotification] = useState(false);
   const value = useMemo(() => ({ showNotification, setShowNotification }), [

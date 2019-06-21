@@ -2,10 +2,10 @@ import React from 'react';
 import Switch from 'react-switch';
 
 import { Wrapper, UncheckedIcon, CheckedIcon } from './ThemeChanger.components';
-import { LIGHT, DARK } from 'constants/themes';
-import { useTheme } from 'components/Contexts/ThemeContext';
+import { LIGHT, DARK } from '@/constants/themes';
+import { useTheme } from '@/components/Contexts/ThemeContext';
 
-const BLACK_COLOR: string = '#000';
+const BLACK_COLOR = '#000';
 
 function ThemeChanger() {
   const { theme, toogle } = useTheme();

@@ -1,19 +1,15 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import LanguageChanger from 'components/LanguageChanger';
-import NetworkOfflineMessage from 'components/Notifications/NetworkOfflineMessage';
-import ThemeChanger from 'components/ThemeChanger';
-import { localStorageInstance as LocalStorage } from 'utils/localStorage';
+import LanguageChanger from '@/components/LanguageChanger';
+import NetworkOfflineMessage from '@/components/Notifications/NetworkOfflineMessage';
+import ThemeChanger from '@/components/ThemeChanger';
+import { localStorageInstance as LocalStorage } from '@/utils/localStorage';
 import { Wrapper } from './Settings.components';
-import { useNetworkStatus } from 'components/Contexts/NetworkStatusContext';
-import { LocalStorageFields as Fields } from 'constants/localStorageFields';
+import { useNetworkStatus } from '@/components/Contexts/NetworkStatusContext';
+import { LocalStorageFields as Fields } from '@/constants/localStorageFields';
 
-interface Props {
-  currentLanguage: string;
-}
-
-function Settings({ currentLanguage }: Props) {
+function Settings() {
   const { isOnline } = useNetworkStatus();
 
   const [, i18n] = useTranslation();

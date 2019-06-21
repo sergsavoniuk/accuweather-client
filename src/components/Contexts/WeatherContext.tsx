@@ -7,8 +7,8 @@ import React, {
   useCallback,
 } from 'react';
 
-import { localStorageInstance as LocalStorage } from 'utils/localStorage';
-import { LocalStorageFields as Fields } from 'constants/localStorageFields';
+import { localStorageInstance as LocalStorage } from '@/utils/localStorage';
+import { LocalStorageFields as Fields } from '@/constants/localStorageFields';
 
 interface IWeatherContext {
   cityId: string | null;
@@ -17,7 +17,7 @@ interface IWeatherContext {
 
 const WeatherContext = createContext<IWeatherContext | null>(null);
 
-function WeatherProvider({ children }: { children: React.ReactNode }) {
+function WeatherProvider({ children }: { children?: React.ReactNode }) {
   const [cityId, setCityId] = useState<string | null>(null);
   const value = useMemo(() => ({ cityId, setCityId }), [cityId]);
 

@@ -8,18 +8,18 @@ import React, {
 } from 'react';
 import { ThemeProvider as StyledCompoThemeProvider } from 'styled-components';
 
-import LocalStorage from '~/utils/localStorage';
-import Themes, { DARK, LIGHT } from '~/constants/themes';
-import { LocalStorageFields as Fields } from '~/constants/localStorageFields';
+import { localStorageInstance as LocalStorage } from '@/utils/localStorage';
+import Themes, { DARK } from '@/constants/themes';
+import { LocalStorageFields as Fields } from '@/constants/localStorageFields';
 
 interface IThemeContext {
-  theme: DARK | LIGHT;
+  theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const ThemeContext = createContext<IThemeContext | null>(null);
 
-function ThemeProvider({ children }: { children: React.ReactNode }) {
+function ThemeProvider({ children }: { children?: React.ReactElement }) {
   const [theme, setTheme] = useState(LocalStorage.get(Fields.theme) || DARK);
   const value = useMemo(() => ({ theme, setTheme }), [theme]);
 

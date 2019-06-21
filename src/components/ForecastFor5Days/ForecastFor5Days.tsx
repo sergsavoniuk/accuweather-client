@@ -1,18 +1,17 @@
 import React from 'react';
 
-import ForecastForDayCard, {
-  ForecastForDayCardProps,
-} from './ForecastForDayCard';
+import ForecastForDayCard from './ForecastForDayCard';
 import { Wrapper } from './ForecastFor5Days.components';
+import { TransformedFor5DaysForecast } from '@/components/WeatherForecast/ForecastTabs/utils';
 
-interface Props {
-  data: ForecastForDayCardProps[];
+export interface ForecastFor5DaysProps {
+  data: TransformedFor5DaysForecast[];
 }
 
-function ForecastFor5Days({ data }: Props) {
+function ForecastFor5Days({ data = [] }: ForecastFor5DaysProps) {
   return (
     <Wrapper>
-      {data.map((forecast: ForecastForDayCardProps) => (
+      {data.map(forecast => (
         <ForecastForDayCard key={forecast.date} forecast={forecast} />
       ))}
     </Wrapper>

@@ -1,16 +1,42 @@
-import { CITIES_AUTOCOMPLETE_ENDPOINT } from 'constants/endpoints';
+import { CITIES_AUTOCOMPLETE_ENDPOINT } from '@/constants/endpoints';
 
-export function transformResponseData(data) {
-  return data.data.reduce((target, item) => {
-    target[item.Key] = {
-      city: item.LocalizedName,
-      country: item.Country.LocalizedName,
+interface CityResponse {
+  data: Array<{
+    Key: string;
+    LocalizedName: string;
+    Country: {
+      LocalizedName: string;
     };
-    return target;
-  }, {});
+  }>;
 }
 
-export function formatUrl({ query, language }) {
+interface CityTransformedData {
+  [Key: string]: {
+    city: string;
+    country: string;
+  };
+}
+
+export function transformResponseData(data: CityResponse): CityTransformedData {
+  return data.data.reduce(
+    (target, item) => {
+      target[item.Key] = {
+        city: item.LocalizedName,
+        country: item.Country.LocalizedName,
+      };
+      return target;
+    },
+    {} as CityTransformedData,
+  );
+}
+
+export function formatUrl({
+  query,
+  language,
+}: {
+  query: string;
+  language: string;
+}) {
   return `${CITIES_AUTOCOMPLETE_ENDPOINT}?apikey=${
     process.env.REACT_APP_ACCUWEATHER_KEY
   }&q=${query}&language=${language}`;

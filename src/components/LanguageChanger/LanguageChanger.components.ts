@@ -12,12 +12,16 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export const RussianLanguageButton = styled(Button)`
+interface ButtonProps {
+  active: boolean;
+}
+
+export const RussianLanguageButton = styled(Button)<ButtonProps>`
   background: url(${process.env.PUBLIC_URL}/images/ru_flag.png);
-  ${props => props.active && `border: 3px solid ${props.theme.primaryColor}`}
+  ${({ active, theme }) => active && `border: 3px solid ${theme.primaryColor}`}
 `;
 
-export const BritishLanguageButton = styled(Button)`
+export const BritishLanguageButton = styled(Button)<ButtonProps>`
   background: url(${process.env.PUBLIC_URL}/images/en_flag.png);
-  ${props => props.active && `border: 3px solid ${props.theme.primaryColor}`}
+  ${({ active, theme }) => active && `border: 3px solid ${theme.primaryColor}`}
 `;
