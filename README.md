@@ -17,6 +17,8 @@ You can view a live demo over at https://accuweather-client.herokuapp.com/
 This is a minimalistic app that allows you to view a weather forecast. It uses [AccuWeather APIs](https://developer.accuweather.com/) that provide different API endpoints, including Locations, Current Conditions, Daily and Hourly Forecasts.
 
 **Note:** Limited Trial access allows each developer up to 50 calls per day.
+<br />
+**Note:** The version of an application that's written using Typescript is available on branch `accuweather-client-ts`.
 
 ## Features
 
