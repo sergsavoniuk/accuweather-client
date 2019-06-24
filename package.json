@@ -25,11 +25,11 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build-sw": "node ./src/sw-build.js",
-    "build": "rimraf -rf build && cross-env NODE_PATH=src/ react-scripts build && npm run build-sw",
+    "build": "rimraf -rf build && cross-env NODE_PATH=src/ react-app-rewired build && npm run build-sw",
     "build:run": "yarn build && node ./src/server.js",
     "format": "prettier \"src/**/*.{js,jsx}\" --write",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": "react-app"
