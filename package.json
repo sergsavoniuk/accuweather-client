@@ -41,7 +41,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "prettier": "^1.16.4",
     "rimraf": "^2.6.3",
     "workbox-build": "^4.3.1"
